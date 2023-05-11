@@ -5,6 +5,7 @@ public class PCB {
     int memStart;
     int memEnd;
 
+
     public PCB(int pId, String state, int pc, int memStart, int memEnd) {
         this.pId = pId;
         this.state = state;
