@@ -1,16 +1,18 @@
 public class Mutex {
     int flag;
     String owner;
+    String mutexName;
 
-    public Mutex() {
+    public Mutex(String mutexName) {
+        this.mutexName=mutexName;
         this.flag = 1;
 
     }
-    public void semWait(){
+    public void semWait(PCB pcb){
 
     }
 
-    public void semSignal(){
+    public void semSignal(PCB pcb){
 
     }
     public int getFlag() {
