@@ -12,6 +12,10 @@ public class Mutex {
 
     }
 
+    public String getMutexName() {
+        return mutexName;
+    }
+
     public void semSignal(PCB pcb){
 
     }
