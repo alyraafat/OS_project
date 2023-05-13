@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="file changes">
+      <change afterPath="$PROJECT_DIR$/src/Program_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PCB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+    </list>
+    <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +28,33 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Parser.java">
+      <ranges>
+        <range start1="0" end1="4" start2="0" end2="1" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="8" end1="9" start2="5" end2="6" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="14" end1="18" start2="11" end2="12" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="19" end1="24" start2="13" end2="15" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="25" end1="27" start2="16" end2="18" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="30" end1="36" start2="21" end2="49" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="37" end1="37" start2="50" end2="51" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="38" end1="38" start2="52" end2="58" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="39" end1="39" start2="59" end2="61" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="40" end1="40" start2="62" end2="63" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="41" end1="41" start2="64" end2="66" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="44" end1="45" start2="69" end2="70" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="47" end1="47" start2="72" end2="78" changelist="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" />
+        <range start1="48" end1="48" start2="79" end2="91" changelist="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" />
+        <range start1="49" end1="49" start2="92" end2="133" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Main.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="2" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="3" end1="6" start2="5" end2="14" changelist="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,6 +80,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\IdeaProjects\OS_project\src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,6 +96,7 @@
       <workItem from="1683802776460" duration="8911000" />
       <workItem from="1683889843989" duration="1113000" />
       <workItem from="1683912184080" duration="2597000" />
+      <workItem from="1683964534698" duration="7933000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -96,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683890328924</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="file changes">
+      <created>1683964633670</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683964633670</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
