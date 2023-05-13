@@ -70,7 +70,25 @@ public class Parser {
      public static void saveInMemory(PCB pcb, String path) throws IOException {
           File file = new File(path);
           BufferedReader br = new BufferedReader(new FileReader(file));
+          StringBuffer sb = new StringBuffer();
+          String line;
 
+          int start = pcb.memStart;
+          int end = pcb.memEnd;
+          int counter = pcb.memStart;
+
+          memory[counter++] = pcb.getpId() + "";
+          memory[counter++] = pcb.getState();
+          memory[counter++] = pcb.getPc() + "";
+          memory[counter++] = start + "";
+          memory[counter++] = end + "";
+          memory[counter++] = "";
+          memory[counter++] = "";
+          memory[counter++] = "";
+
+          while((line=br.readLine())!=null){
+               memory[counter++] = line;
+          }
      }
 
      public  void changeState(PCB pcb,String state) {
