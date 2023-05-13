@@ -1,15 +1,46 @@
 import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Parser {
      static String[] memory= Memory.getInstance().getMemory();
      Queue<Integer> Ready = new LinkedList<Integer>();
-     Queue<Integer> GeneralBlocked = new LinkedList<Integer>();
-     Queue<Integer> InputBlocked = new LinkedList<Integer>();
-     Queue<Integer> OutputBlocked = new LinkedList<Integer>();
+     Queue<Integer> generalBlocked = new LinkedList<Integer>();
+     Queue<Integer> inputBlocked = new LinkedList<Integer>();
+     Queue<Integer> outputBlocked = new LinkedList<Integer>();
      Queue<Integer> fileBlocked = new LinkedList<Integer>();
      static String[] Disk=new String[20];
+     static  String[] temp=new String[20];
+     static SystemCall systemCall=new SystemCall();
+     public void updatePC(PCB pcb) {
+          int x= pcb.getPc();
+          if (pcb.getpId() == 1) {
+
+               if (memory[0].equals("1")) {
+                    memory[2] =(x+1)+"" ;
+               } else if (memory[20].equals("1")) {
+                    memory[22] = (x+1)+"";
+               }
+          } else if (pcb.getpId() == 2) {
+
+               if (memory[0].equals("2")) {
+                    memory[2] = (x+1)+"";
+               } else if (memory[20].equals("2")) {
+                    memory[22] = (x+1)+"";
+               }
+
+          } else if (pcb.getpId() == 3) {
+
+               if (memory[0].equals("3")) {
+                    memory[2] = (x+1)+"";
+               } else if (memory[20].equals("3")) {
+                    memory[22] =(x+1)+"";
+               }
+          }
+          pcb.setPc(pcb.getPc()+1);
+
+     }
 
      public static int spaceAvailable(String[] mem) {
           if (mem[0]==null|| mem[0].equals("")) {
@@ -19,13 +50,20 @@ public class Parser {
           } else
                return -1;
      }
-     public static void swapDiskToMem(){
+
+     public void swapDiskToTemp(){
+
+          for (int i = 0; i < 20 ; i++) {
+               temp[i] = Disk[i];
+          }
+     }
+     public  void swapToMem(boolean disk){
           int availbleSpace = spaceAvailable(memory);
 
           if (availbleSpace == 0) {
 
                for (int i = 0; i < 20 ; i++) {
-                    memory[i] = Disk[i];
+                    memory[i] = disk?Disk[i]:temp[i];
                }
                memory[3] = "0";
                memory[4] = "19";
@@ -34,7 +72,7 @@ public class Parser {
           } else if (availbleSpace == 20) {
 
                for (int i = 20; i < 40 ; i++) {
-                    memory[i] = Disk[i];
+                    memory[i] = disk?Disk[i]:temp[i];
                }
                memory[23] = "20";
                memory[24] = "39";
@@ -43,7 +81,7 @@ public class Parser {
 
      }
 
-     public static int swapMemToDisk(){
+     public int swapMemToDisk(){
           int emptied=-1;
           if (!(memory[1].equals("Running"))) {
                System.out.println("process with id"+ memory[0]+ "is swapped From memory to disk");
@@ -64,7 +102,7 @@ public class Parser {
           }
           return emptied;
      }
-     public void createProcess(String path) throws IOException {
+     public PCB createProcess(String path) throws IOException {
           int pcbId=PCB.idReached++;
           String state= "Ready";
           int pc=-1;
@@ -92,12 +130,85 @@ public class Parser {
           PCB pcb = new PCB(pcbId,state,pc,memStart,memEnd);
           saveInMemory(pcb,path);
           this.Ready.add(pcb.getpId());
-
+          return pcb;
 
      }
-//     public static int execute(PCB pcb) throws IOException {
+     public static int execute(PCB pcb,int timeSlice) throws IOException {
+          int pcValue = pcb.getPc();
+
+          for (int i = pcValue; i < pcValue + timeSlice && i < pcb.getMemEnd(); i++) {
+               if (memory[i].equals("null")) {
+                    pcb.setPc(pcb.getMemEnd());
+                    break;
+               }
+               String[] y = memory[i].split(" ");
+               System.out.println("The Instruction that's currently executing is " + memory[i] + " in Process " + pcb.getpId());
+               System.out.println("********");
+//               if (y[0].equals("print")) {
+//                    systemCall.print(y[1], pcb);
+//               }
+//               // Storing variables
+//               else if (y[0].equals("input")) {
+//                    System.out.println("Please enter an input: ");
+//                    Scanner sc = new Scanner(System.in);
+//                    x = sc.nextLine();
+//                    if (pcb.getpID() == 1) {
+//                         input1 = x;
+//                    } else if (pcb.getpID() == 2) {
+//                         input2 = x;
+//                    } else if (pcb.getpID() == 3) {
+//                         input3 = x;
+//                    }
+//               } else if (y[0].equals("readFile")) {
+//                    systemCall.readFile(readMemory(pcb, y[1]));
 //
-//     }
+//
+//               } else if (y[0].equals("assign")) {
+//                    if (y[2].equals("input")) {
+//                         if (pcb.getpID() == 1) {
+//                              systemCall.assign(y[1], input1, pcb);
+//                         } else if (pcb.getpID() == 2) {
+//                              systemCall.assign(y[1], input2, pcb);
+//                         } else if (pcb.getpID() == 3) {
+//                              systemCall.assign(y[1], input3, pcb);
+//                         }
+//                    } else if (y[2].equals("readFile")) {
+//                         systemCall.assign(y[1], file3, pcb);
+//                    }
+//               } else if (y[0].equals("writeFile")) {
+//
+//                    systemCall.writeFile(readMemory(pcb, y[1]), readMemory(pcb, y[2]));
+//
+//               } else if (y[0].equals("printFromTo")) {
+//                    systemCall.printFromTo(y[1], y[2], pcb);
+//               } else if (y[0].equals("semWait")) {
+//                    if (y[1].equals("userInput")) {
+//                         userInput.semWait(y[1], pcb);
+//                    } else if (y[1].equals("userOutput")) {
+//                         userOutput.semWait(y[1], pcb);
+//                    } else if (y[1].equals("file")) {
+//                         file.semWait(y[1], pcb);
+//                    }
+//
+//                    if (GeneralBlocked.contains(pcb.getpID())) {
+//                         changePC(pcb);
+//                         //changeState(pcb,"Blocked");
+//                         break;
+//                    }
+//               } else if (y[0].equals("semSignal")) {
+//                    if (y[1].equals("userInput")) {
+//                         userInput.semSignal(y[1], pcb);
+//                    } else if (y[1].equals("userOutput")) {
+//                         userOutput.semSignal(y[1], pcb);
+//                    } else if (y[1].equals("file")) {
+//                         file.semSignal(y[1], pcb);
+//                    }
+//               }
+
+
+
+          }return 0;
+     }
      public static void saveInMemory(PCB pcb, String path) throws IOException {
           File file = new File(path);
           BufferedReader br = new BufferedReader(new FileReader(file));
@@ -150,7 +261,7 @@ public class Parser {
           }
 
      }
-     public static void emptyMemory(PCB pcb) {
+     public void emptyMemory(PCB pcb) {
           if(memory[0].equals(pcb.getpId()+"")) {
                for(int i = 0; i < 20; i++) {
                     memory[i]="";
@@ -172,28 +283,29 @@ public class Parser {
           Ready = ready;
      }
 
+
      public Queue<Integer> getGeneralBlocked() {
-          return GeneralBlocked;
+          return generalBlocked;
      }
 
      public void setGeneralBlocked(Queue<Integer> generalBlocked) {
-          GeneralBlocked = generalBlocked;
+          this.generalBlocked = generalBlocked;
      }
 
      public Queue<Integer> getInputBlocked() {
-          return InputBlocked;
+          return inputBlocked;
      }
 
      public void setInputBlocked(Queue<Integer> inputBlocked) {
-          InputBlocked = inputBlocked;
+          this.inputBlocked = inputBlocked;
      }
 
      public Queue<Integer> getOutputBlocked() {
-          return OutputBlocked;
+          return outputBlocked;
      }
 
      public void setOutputBlocked(Queue<Integer> outputBlocked) {
-          OutputBlocked = outputBlocked;
+          this.outputBlocked = outputBlocked;
      }
 
      public Queue<Integer> getFileBlocked() {
