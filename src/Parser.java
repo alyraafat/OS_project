@@ -19,10 +19,34 @@ public class Parser {
           } else
                return -1;
      }
-     public static int SwapMemToDisk(){
+     public static void swapDiskToMem(){
+          int availbleSpace = spaceAvailable(memory);
+
+          if (availbleSpace == 0) {
+
+               for (int i = 0; i < 20 ; i++) {
+                    memory[i] = Disk[i];
+               }
+               memory[3] = "0";
+               memory[4] = "19";
+               System.out.println("process with id"+ memory[0]+ "is swapped from disk to memory");
+
+          } else if (availbleSpace == 20) {
+
+               for (int i = 20; i < 40 ; i++) {
+                    memory[i] = Disk[i];
+               }
+               memory[23] = "20";
+               memory[24] = "39";
+               System.out.println("process with id"+ memory[20]+ "is swapped from disk to memory");
+          }
+
+     }
+
+     public static int swapMemToDisk(){
           int emptied=-1;
           if (!(memory[1].equals("Running"))) {
-               System.out.println("process with id"+ memory[0]+ "is swapped to disk");
+               System.out.println("process with id"+ memory[0]+ "is swapped From memory to disk");
                for (int i = 0; i < 20; i++) {
                     Disk[i] = memory[i];
                     memory[i] = "";
@@ -31,7 +55,7 @@ public class Parser {
 
             }
           else{
-               System.out.println("process with id"+ memory[20]+ "is swapped to disk");
+               System.out.println("process with id"+ memory[20]+ "is swapped from memory to disk");
                for (int i = 0; i < 20; i++) {
                     Disk[i] = memory[i];
                     memory[i] = "";
@@ -40,15 +64,18 @@ public class Parser {
           }
           return emptied;
      }
-     public static void createProcess(String path) throws IOException {
+     public void createProcess(String path) throws IOException {
           int pcbId=PCB.idReached++;
-          String state= "new";
+          String state= "Ready";
           int pc=-1;
           int memStart=-1;
           int memEnd=-1;
           if (spaceAvailable(memory)==-1){
-
                //if memory is full
+               int emptied=swapMemToDisk();
+               memStart= emptied;
+               memEnd = emptied== 0 ? 19 : 39;
+
 
           } else {
                if(spaceAvailable(memory)==0){
@@ -64,9 +91,13 @@ public class Parser {
 
           PCB pcb = new PCB(pcbId,state,pc,memStart,memEnd);
           saveInMemory(pcb,path);
+          this.Ready.add(pcb.getpId());
 
 
      }
+//     public static int execute(PCB pcb) throws IOException {
+//
+//     }
      public static void saveInMemory(PCB pcb, String path) throws IOException {
           File file = new File(path);
           BufferedReader br = new BufferedReader(new FileReader(file));
