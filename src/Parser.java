@@ -1,9 +1,12 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Parser {
-     Memory memory=Memory.getInstance();
+     static Memory memory=Memory.getInstance();
      Queue<Integer> Ready = new LinkedList<Integer>();
      Queue<Integer> GeneralBlocked = new LinkedList<Integer>();
      Queue<Integer> InputBlocked = new LinkedList<Integer>();
@@ -17,6 +20,34 @@ public class Parser {
 
 
      }
+     public static int ifSpace(String[] mem) {
+          if (mem[0].equals("")) {
+               return 0;
+          } else if (mem[15]==null || mem[15].equals("")) {
+               return 15;
+          } else
+               return -1;
+     }
+     public static void createProcess(String path) throws FileNotFoundException {
+     int pcbId=PCB.idReached++;
+     String state= "new";
+     int pc=0;
+     int memStart=ifSpace(memory.getMemory());
+     int memEnd=ifSpace(memory.getMemory())==0?15:30;
+
+
+
+
+
+
+
+     }
+     public static void saveToMemory( PCB pcb,String path) throws FileNotFoundException {
+          File file = new File(path);
+          BufferedReader br = new BufferedReader(new FileReader(file));
+
+     }
+
 
      public Queue<Integer> getReady() {
           return Ready;

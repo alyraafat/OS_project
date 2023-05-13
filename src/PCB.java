@@ -4,6 +4,7 @@ public class PCB {
     int pc;
     int memStart;
     int memEnd;
+    static int idReached=0;
 
 
     public PCB(int pId, String state, int pc, int memStart, int memEnd) {
@@ -13,6 +14,8 @@ public class PCB {
         this.memStart = memStart;
         this.memEnd = memEnd;
     }
+
+
 
     public int getpId() {
         return pId;
