@@ -8,7 +8,8 @@ public class Parser {
      static String input2;
      static String input3;
      String readFile;
-     static String[] memory= Memory.getInstance().getMemory();
+     static Memory memoryInstance=Memory.getInstance();
+     static String[] memory= memoryInstance.getMemory();
      Queue<Integer> Ready = new LinkedList<Integer>();
      static Queue<Integer> generalBlocked = new LinkedList<Integer>();
      Queue<Integer> inputBlocked = new LinkedList<Integer>();
@@ -155,7 +156,7 @@ public class Parser {
                     systemCall.print( pcb,y[1]);
                }
                else if (y[0].equals("readFile")) {
-                    systemCall.readFile(readFromMemory(pcb, y[1]));
+                    systemCall.readFile(memoryInstance.read(pcb, y[1]));
 
 
                } else if (y[0].equals("assign")) {
@@ -182,7 +183,7 @@ public class Parser {
                     }
                } else if (y[0].equals("writeFile")) {
 
-                    systemCall.writeFile(this.readFromMemory(pcb, y[1]), this.readFromMemory(pcb, y[2]));
+                    systemCall.writeFile(memoryInstance.read(pcb, y[1]), memoryInstance.read(pcb, y[2]));
 
                } else if (y[0].equals("printFromTo")) {
                     systemCall.printFromTo(y[1], y[2], pcb);
@@ -215,25 +216,7 @@ public class Parser {
           }return 0;
      }
 
-     public String readFromMemory(PCB pcb, String needed) {
-          if (memory[0].equals(pcb.getpId()+"")) {
-               for (int i = 5; i < 8; i++) {
-                    String[] y = memory[i].split(" ");
-                    if (y[0].equals(needed)) {
-                         return y[1];
-                    }
-               }
-          } else if (memory[20].equals(pcb.getpId()+"")) {
-               for (int i = 25; i < 28; i++) {
-                    String[] y = memory[i].split(" ");
-                    if (y[0].equals( needed)) {
-                         return y[1];
-                    }
-               }
 
-          }
-          return needed;
-     }
 
      public static void saveInMemory(PCB pcb, String path) throws IOException {
           File file = new File(path);
@@ -287,18 +270,7 @@ public class Parser {
           }
 
      }
-     public void emptyMemory(PCB pcb) {
-          if(memory[0].equals(pcb.getpId()+"")) {
-               for(int i = 0; i < 20; i++) {
-                    memory[i]="";
-               }
-          }
-          else if(memory[20].equals(pcb.getpId()+"")) {
-               for(int i = 20; i < 40; i++) {
-                    memory[i]="";
-               }
-          }
-     }
+
 
 
      public Queue<Integer> getReady() {

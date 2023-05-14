@@ -3,12 +3,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class SystemCall {
-    static Parser parser=new Parser();
+    static Parser parser;
     public SystemCall() {
 
     }
     public void print(PCB pcb,String needed){
-        System.out.println(parser.readFromMemory(pcb,needed));
+        System.out.println(parser.memoryInstance.read(pcb,needed));
     }
     public static void assign(String x, String y, PCB pcb) {
 
