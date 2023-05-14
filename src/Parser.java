@@ -4,9 +4,8 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Parser {
-     static String input1;
-     static String input2;
-     static String input3;
+     static String input;
+
      String readFile;
      static Memory memoryInstance=Memory.getInstance();
      static String[] memory= memoryInstance.getMemory();
@@ -21,6 +20,7 @@ public class Parser {
      static String[] Disk=new String[20];
      static  String[] temp=new String[20];
      static SystemCall systemCall=new SystemCall();
+
      public static void updatePC(PCB pcb) {
           int x= pcb.getPc();
           if (pcb.getpId() == 1) {
@@ -136,7 +136,7 @@ public class Parser {
           }
 
           PCB pcb = new PCB(pcbId,state,pc,memStart,memEnd);
-          saveInMemory(pcb,path);
+          memoryInstance.saveInMemory(pcb,path);
           this.Ready.add(pcb.getpId());
           return pcb;
 
@@ -155,31 +155,18 @@ public class Parser {
                if (y[0].equals("print")) {
                     systemCall.print( pcb,y[1]);
                }
-               else if (y[0].equals("readFile")) {
-                    systemCall.readFile(memoryInstance.read(pcb, y[1]));
-
-
-               } else if (y[0].equals("assign")) {
+               else if (y[0].equals("assign")) {
                     if (y[2].equals("input")) {
                          System.out.println("Please enter an input: ");
                          Scanner sc = new Scanner(System.in);
                          Input = sc.nextLine();
-                         if (pcb.getpId() == 1) {
-                              input1 = Input;
-                         } else if (pcb.getpId() == 2) {
-                              input2 = Input;
-                         } else if (pcb.getpId() == 3) {
-                              input3 = Input;
+                         input = Input;
+                         systemCall.assign(y[1], input, pcb);
                          }
-                         if (pcb.getpId() == 1) {
-                              systemCall.assign(y[1], input1, pcb);
-                         } else if (pcb.getpId() == 2) {
-                              systemCall.assign(y[1], input2, pcb);
-                         } else if (pcb.getpId() == 3) {
-                              systemCall.assign(y[1], input3, pcb);
-                         }
-                    } else if (y[2].equals("readFile")) {
-                         systemCall.assign(y[1], file3, pcb);
+
+                     else if (y[2].equals("readFile")) {
+                          systemCall.readFile(memoryInstance.read(pcb, y[1]));
+                          systemCall.assign(y[1], readFile, pcb);
                     }
                } else if (y[0].equals("writeFile")) {
 
@@ -189,11 +176,11 @@ public class Parser {
                     systemCall.printFromTo(y[1], y[2], pcb);
                } else if (y[0].equals("semWait")) {
                     if (y[1].equals("userInput")) {
-                         userInput.semWait(y[1], pcb);
+                         userInput.semWait(pcb);
                     } else if (y[1].equals("userOutput")) {
-                         userOutput.semWait(y[1], pcb);
+                         userOutput.semWait(pcb);
                     } else if (y[1].equals("file")) {
-                         file.semWait(y[1], pcb);
+                         file.semWait(pcb);
                     }
 
                     if (generalBlocked.contains(pcb.getpId())) {
@@ -203,11 +190,11 @@ public class Parser {
                     }
                } else if (y[0].equals("semSignal")) {
                     if (y[1].equals("userInput")) {
-                         userInput.semSignal(y[1], pcb);
+                         userInput.semSignal(pcb);
                     } else if (y[1].equals("userOutput")) {
-                         userOutput.semSignal(y[1], pcb);
+                         userOutput.semSignal(pcb);
                     } else if (y[1].equals("file")) {
-                         file.semSignal(y[1], pcb);
+                         file.semSignal(pcb);
                     }
                }
 
@@ -218,29 +205,7 @@ public class Parser {
 
 
 
-     public static void saveInMemory(PCB pcb, String path) throws IOException {
-          File file = new File(path);
-          BufferedReader br = new BufferedReader(new FileReader(file));
-          StringBuffer sb = new StringBuffer();
-          String line;
 
-          int start = pcb.memStart;
-          int end = pcb.memEnd;
-          int counter = pcb.memStart;
-
-          memory[counter++] = pcb.getpId() + "";
-          memory[counter++] = pcb.getState();
-          memory[counter++] = pcb.getPc() + "";
-          memory[counter++] = start + "";
-          memory[counter++] = end + "";
-          memory[counter++] = "";
-          memory[counter++] = "";
-          memory[counter++] = "";
-
-          while((line=br.readLine())!=null){
-               memory[counter++] = line;
-          }
-     }
 
      public  void changeState(PCB pcb,String state) {
           pcb.setState(state);
@@ -269,6 +234,18 @@ public class Parser {
                }
           }
 
+     }
+     public void printQueues(){
+          System.out.print("Ready Queue: ");
+          printQueue(Ready);
+          System.out.print("General Blocked Queue: ");
+          printQueue(generalBlocked);
+          System.out.print("userInput Blocked Queue: ");
+          printQueue(inputBlocked);
+          System.out.print("userOutput Blocked Queue: ");
+          printQueue(outputBlocked);
+          System.out.print("file Blocked Queue: ");
+          printQueue(fileBlocked);
      }
 
 
@@ -313,7 +290,12 @@ public class Parser {
      public void setFileBlocked(Queue<Integer> fileBlocked) {
           this.fileBlocked = fileBlocked;
      }
-
+     public static void printQueue(Queue<Integer> q) {
+          for (Integer item : q) {
+               System.out.print(item + " ");
+          }
+          System.out.println();
+     }
 
 
 }

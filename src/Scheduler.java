@@ -21,7 +21,7 @@ public class Scheduler {
         while (!parser.Ready.isEmpty()) {
 
             processId = parser.Ready.peek();
-
+            parser.printQueues();
             memoryInstance.printMem(0);
             memoryInstance.printMem(1);
 
@@ -113,22 +113,5 @@ public class Scheduler {
         }
     }
 
-//      System.out.print("Ready Queue: ");
-//    printQueues(parser.Ready);
-//            System.out.print("General Blocked Queue: ");
-//    printQueues(parser.generalBlocked);
-//            System.out.print("userInput Blocked Queue: ");
-//    printQueues(parser.inputBlocked);
-//            System.out.print("file Blocked Queue: ");
-//    printQueues(parser.fileBlocked);
-//            System.out.print("userOutput Blocked Queue: ");
-//    printQueues(parser.outputBlocked);
 
-
-    public static void printQueues(Queue<Integer> q) {
-        for (Integer item : q) {
-            System.out.print(item + " ");
-        }
-        System.out.println();
-    }
 }

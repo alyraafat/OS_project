@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Memory {
     private static String memory[];
     private static Memory instance;
@@ -43,6 +48,29 @@ public class Memory {
             for(int i = 20; i < 40; i++) {
                 memory[i]="";
             }
+        }
+    }
+    public void saveInMemory(PCB pcb, String path) throws IOException {
+        File file = new File(path);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        StringBuffer sb = new StringBuffer();
+        String line;
+
+        int start = pcb.memStart;
+        int end = pcb.memEnd;
+        int counter = pcb.memStart;
+
+        memory[counter++] = pcb.getpId() + "";
+        memory[counter++] = pcb.getState();
+        memory[counter++] = pcb.getPc() + "";
+        memory[counter++] = start + "";
+        memory[counter++] = end + "";
+        memory[counter++] = "";
+        memory[counter++] = "";
+        memory[counter++] = "";
+
+        while((line=br.readLine())!=null){
+            memory[counter++] = line;
         }
     }
     public void printMem(int place){
