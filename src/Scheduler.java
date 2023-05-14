@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Queue;
 
 public class Scheduler {
-    static Parser parser;
+    static Parser parser=new Parser();
     PCB pcb1 = null;
     PCB pcb2 = null;
     PCB pcb3 = null;

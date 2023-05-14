@@ -20,6 +20,9 @@ public class Parser {
      static String[] Disk=new String[20];
      static  String[] temp=new String[20];
      static SystemCall systemCall=new SystemCall();
+     static Scheduler scheduler=new Scheduler();
+
+     static int t1,t2,t3;
 
      public static void updatePC(PCB pcb) {
           int x= pcb.getPc();
@@ -197,10 +200,29 @@ public class Parser {
                          file.semSignal(pcb);
                     }
                }
+               t1--;
+               t2--;
+               t3--;
+
+               if (t1 == 0) {
+                    System.out.println("Process 1" + " arrived.");
+                    createProcess("src/Program_1.txt");
+
+               }
+               else if (t2 == 0) {
+                    System.out.println("Process 2" + " arrived.");
+                    createProcess("src/Program_2.txt");
+
+               }
+               else if (t3 == 0) {
+                    System.out.println("Process 3" + " arrived.");
+                    createProcess("src/Program_3.txt");
+               }
 
 
+          }
 
-          }return 0;
+          return pcb.getPc();
      }
 
 
@@ -296,6 +318,41 @@ public class Parser {
           }
           System.out.println();
      }
+     public static void main(String[] args) throws IOException {
+        int Q=0;
+//		saveToMemory("D:\\GUC\\CODING\\ProjectOS\\Program_1.txt", 1);
+//		saveToMemory("D:\\GUC\\CODING\\ProjectOS\\Program_2.txt", 2);
+//		saveToMemory("D:\\GUC\\CODING\\ProjectOS\\Program_3.txt", 3);
 
+          Scanner sc = new Scanner(System.in);
+          System.out.println("Please Enter The Arrival Time Of The First Process: ");
+          t1 = sc.nextInt();
+
+          System.out.println("Please Enter The Arrival Time Of The Second Process: ");
+          t2 = sc.nextInt();
+
+          System.out.println("Please Enter The Arrival Time Of The Third Process: ");
+          t3 = sc.nextInt();
+
+          System.out.println("Please Enter The Quanta: ");
+          Q = sc.nextInt();
+
+//		t1 = 0;
+//		t2 = 1;
+//		t3 = 4;
+//		Q = 2;
+//          BufferedReader br = new BufferedReader(new FileReader(HardDisk));
+//          String x;
+//          FileWriter diskWriter = new FileWriter(HardDisk);
+//          while (((x = br.readLine()) != null)) {
+//               diskWriter.write("" + System.lineSeparator());
+//          }
+//          diskWriter.close();
+          scheduler = new Scheduler();
+
+
+          scheduler.schedule(t1, t2, t3, Q);
+
+     }
 
 }

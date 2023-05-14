@@ -77,7 +77,7 @@ public class Memory {
         int counter=place==0?0:20;
         System.out.println();
         System.out.println("*******************************");
-        System.out.println("Memory Part2 Contains:");
+        System.out.println("Memory" + " "place +" Contains:");
         System.out.println("PCB of the process : ");
         System.out.print("The process ID is " + memory[counter++] + " / ");
         System.out.print("The process State is " + memory[counter++] + " / ");
