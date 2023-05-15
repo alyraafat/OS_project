@@ -2,9 +2,34 @@ import java.io.IOException;
 import java.util.Queue;
 
 public class Scheduler {
-    static Parser parser=new Parser();
+    static Parser parser=Parser.getInstance();
     PCB pcb1 = null;
     PCB pcb2 = null;
+
+    public PCB getPcb1() {
+        return pcb1;
+    }
+
+    public void setPcb1(PCB pcb1) {
+        this.pcb1 = pcb1;
+    }
+
+    public PCB getPcb2() {
+        return pcb2;
+    }
+
+    public void setPcb2(PCB pcb2) {
+        this.pcb2 = pcb2;
+    }
+
+    public PCB getPcb3() {
+        return pcb3;
+    }
+
+    public void setPcb3(PCB pcb3) {
+        this.pcb3 = pcb3;
+    }
+
     PCB pcb3 = null;
     int executing;
     static Memory memoryInstance=Memory.getInstance();
@@ -26,7 +51,7 @@ public class Scheduler {
             memoryInstance.printMem(1);
 
             if (processId == 1) {
-                if (parser.memory[0].equals("1") || parser.memory[20].equals("1")) {
+                if (parser.memory[0].equals("1") || parser.memory[5].equals("1")) {
                     parser.changeState(pcb1,"Running");
                     parser.Ready.remove(1);
                     System.out.println("Process " + processId + " is Running.");
@@ -47,7 +72,7 @@ public class Scheduler {
 
              }
             else if (processId == 2) {
-                if (parser.memory[0].equals("2") || parser.memory[20].equals("2")) {
+                if (parser.memory[0].equals("2") || parser.memory[5].equals("2")) {
                     parser.changeState(pcb2,"Running");
                     parser.Ready.remove(2);
                     System.out.println("Process " + processId + " is Running.");
@@ -65,7 +90,7 @@ public class Scheduler {
                 }
 
             } else if (processId == 3) {
-                if (parser.memory[0].equals("3") || parser.memory[20].equals("3")) {
+                if (parser.memory[0].equals("3") || parser.memory[5].equals("3")) {
                     parser.changeState(pcb3,"Running");
                     parser.Ready.remove(3);
                     System.out.println("Process " + processId + " is Running.");

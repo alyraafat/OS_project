@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class SystemCall {
-    static Parser parser;
+    static Parser parser=Parser.getInstance();
     static Memory memory=Memory.getInstance();
 
     public SystemCall() {
@@ -18,16 +18,17 @@ public class SystemCall {
         String result=x+" = "+y;
 
         if (parser.memory[0].equals(pcb.getpId()+"")) {
-            for (int i=5;i<8;i++) {
-                if (parser.memory[i].equals("")) {
+            for (int i=10;i<13;i++) {
+                if (parser.memory[i]==null||parser.memory[i].equals("")) {
                     parser.memory[i]=result;
+                    System.out.println(result);
                     break;
                 }
             }
         }
-        else if (parser.memory[20].equals(pcb.getpId()+"")) {
+        else if (parser.memory[5].equals(pcb.getpId()+"")) {
             for (int i=25;i<28;i++) {
-                if (parser.memory[i].equals("")) {
+                if (parser.memory[i]==null||parser.memory[i].equals("")) {
                     parser.memory[i]=result;
                     break;
                 }

@@ -2,7 +2,7 @@ public class Mutex {
     int flag;
     String owner;
     String mutexName;
-    static Parser parser;
+    static Parser parser=Parser.getInstance();
 
     public Mutex(String mutexName) {
         this.mutexName=mutexName;

@@ -21,17 +21,17 @@ public class Memory {
     }
     public String read(PCB pcb, String needed) {
         if (memory[0].equals(pcb.getpId()+"")) {
-            for (int i = 5; i < 8; i++) {
+            for (int i = 10; i < 13; i++) {
                 String[] y = memory[i].split(" ");
                 if (y[0].equals(needed)) {
-                    return y[1];
+                    return y[2];
                 }
             }
-        } else if (memory[20].equals(pcb.getpId()+"")) {
-            for (int i = 25; i < 28; i++) {
+        } else if (memory[5].equals(pcb.getpId()+"")) {
+            for (int i = 30; i < 35; i++) {
                 String[] y = memory[i].split(" ");
                 if (y[0].equals( needed)) {
-                    return y[1];
+                    return y[2];
                 }
             }
 
@@ -40,12 +40,18 @@ public class Memory {
     }
     public void emptyMemory(PCB pcb) {
         if(memory[0].equals(pcb.getpId()+"")) {
-            for(int i = 0; i < 20; i++) {
+            for(int i = 0; i < 5; i++) {
+                memory[i]="";
+            }
+            for(int i = 10; i < 25; i++) {
                 memory[i]="";
             }
         }
-        else if(memory[20].equals(pcb.getpId()+"")) {
-            for(int i = 20; i < 40; i++) {
+        else if(memory[5].equals(pcb.getpId()+"")) {
+            for(int i = 5; i < 10; i++) {
+                memory[i]="";
+            }
+            for(int i = 25; i < 40; i++) {
                 memory[i]="";
             }
         }
@@ -65,6 +71,7 @@ public class Memory {
         memory[counter++] = pcb.getPc() + "";
         memory[counter++] = start + "";
         memory[counter++] = end + "";
+        counter+=5;
         memory[counter++] = "";
         memory[counter++] = "";
         memory[counter++] = "";
@@ -74,17 +81,23 @@ public class Memory {
         }
     }
     public void printMem(int place){
-        int counter=place==0?0:20;
+        int counter=place==0?0:5;
         System.out.println();
         System.out.println("*******************************");
-        System.out.println("Memory" + " " +place +" Contains:");
+        System.out.println("Memory" + " " +(place+1) +" Contains:");
         System.out.println("PCB of the process : ");
         System.out.print("The process ID is " + memory[counter++] + " / ");
         System.out.print("The process State is " + memory[counter++] + " / ");
         System.out.print("The program counter of the process is " + memory[counter++] + " / ");
         System.out.print("The lower boundary of the process in the memory is " + memory[counter++] + " / ");
-        System.out.print("The upper boundary of the process in the memory is " + memory[counter++]);
+        System.out.print("The upper boundary of the process in the memory is " + memory[counter]);
         System.out.println();
+        if (place==0){
+            counter=10;
+        }else{
+            counter=25;
+        }
+
         System.out.println("Variables  of the process : ");
         System.out.print("First variable : " + memory[counter++] + " / ");
         System.out.print("Second variable : " + memory[counter++] + " / ");
