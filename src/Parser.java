@@ -82,29 +82,33 @@ public class Parser {
      }
      public  void swapToMem(boolean disk){
           int availbleSpace = spaceAvailable(memory);
-
+          int j=0;
           if (availbleSpace == 0) {
                for(int i = 0; i < 5; i++) {
-                    memory[i] = disk?Disk[i]:temp[i];
+                    memory[i] = disk?Disk[j]:temp[j];
+                    j++;
                }
                for(int i = 10; i < 25; i++) {
-                    memory[i] = disk?Disk[i]:temp[i];
+                    memory[i] = disk?Disk[j]:temp[j];
+                    j++;
                }
                memory[3] = "0";
                memory[4] = "24";
-               System.out.println("process with id"+ memory[0]+ "is swapped from disk to memory");
+               System.out.println("process with id "+ memory[0]+ "is swapped from disk to memory");
 
           } else if (availbleSpace == 5) {
 
                for(int i = 5; i < 10; i++) {
-                    memory[i] = disk?Disk[i]:temp[i];
+                    memory[i] = disk?Disk[j]:temp[j];
+                    j++;
                }
                for(int i = 25; i < 40; i++) {
-                    memory[i] = disk?Disk[i]:temp[i];
+                    memory[i] = disk?Disk[j]:temp[j];
+                    j++;
                }
                memory[8] = "5";
                memory[9] = "39";
-               System.out.println("process with id"+ memory[5]+ "is swapped from disk to memory");
+               System.out.println("process with id "+ memory[5]+ "is swapped from disk to memory");
           }
 
      }
@@ -112,31 +116,35 @@ public class Parser {
      public int swapMemToDisk(){
           int emptied=-1;
           if (!(memory[1].equals("Running"))) {
-               System.out.println("process with id"+ memory[0]+ "is swapped From memory to disk");
+               System.out.println("process with id "+ memory[0]+ "is swapped From memory to disk");
+               int j=0;
                for (int i = 0; i < 5; i++) {
-                    Disk[i] = memory[i];
+                    Disk[j] = memory[i];
                     memory[i] = "";
-                    emptied= 0;
+                    j++;
+
                }
                for (int i = 10; i < 25; i++) {
-                    Disk[i] = memory[i];
+                    Disk[j] = memory[i];
                     memory[i] = "";
-                    emptied= 0;
-               }
 
+               }
+               emptied= 0;
             }
           else{
                System.out.println("process with id "+ memory[5]+ "is swapped from memory to disk");
-               for (int i = 5; i < 9; i++) {
-                    Disk[i] = memory[i];
+               int j=0;
+               for (int i = 5; i < 10; i++) {
+                    Disk[j] = memory[i];
                     memory[i] = "";
-                    emptied= 5;
+                    j++;
                }
                for (int i = 25; i < 40; i++) {
-                    Disk[i] = memory[i];
+                    Disk[j] = memory[i];
                     memory[i] = "";
-                    emptied= 5;
+                    j++;
                }
+               emptied= 5;
           }
           return emptied;
      }
@@ -153,12 +161,13 @@ public class Parser {
           int pc=-1;
           int memStart=-1;
           int memEnd=-1;
+//          System.out.println(spaceAvailable(memory));
           if (spaceAvailable(memory)==-1){
                //if memory is full
                int emptied=swapMemToDisk();
                memStart= emptied;
                memEnd = emptied== 0 ? 24 : 39;
-
+               pc=emptied==0?13:28;
 
           } else {
                if(spaceAvailable(memory)==0){
@@ -255,8 +264,10 @@ public class Parser {
                 updatePC(pcb);
 
           }
+          if(!generalBlocked.contains(pcb.getpId())){
           changeState(pcb,"Ready");
           this.Ready.add(pcb.getpId());
+          }
           return pcb.getPc();
      }
 
@@ -305,6 +316,8 @@ public class Parser {
           printQueue(outputBlocked);
           System.out.print("file Blocked Queue: ");
           printQueue(fileBlocked);
+          System.out.println("");
+          System.out.println("*********************");
      }
 
 

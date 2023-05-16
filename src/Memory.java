@@ -70,8 +70,9 @@ public class Memory {
         memory[counter++] = pcb.getState();
         memory[counter++] = pcb.getPc() + "";
         memory[counter++] = start + "";
-        memory[counter++] = end + "";
-        counter+=5;
+        memory[counter] = end + "";
+        counter=start==0?10:25;
+
         memory[counter++] = "";
         memory[counter++] = "";
         memory[counter++] = "";
@@ -110,7 +111,8 @@ public class Memory {
             }
             System.out.print(memory[counter++] + " / ");
         }
-
+        System.out.println();
+        System.out.println("*******************************");
     }
     public static Memory getInstance() {
         if (instance == null){
