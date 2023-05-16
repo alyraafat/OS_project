@@ -61,9 +61,12 @@ public class Scheduler {
                 }
                 else{
 
-                    parser.swapDiskToTemp();
-                    parser.swapMemToDisk();
-                    parser.swapToMem(false);
+//                    parser.swapDiskToTemp();
+//                    parser.swapMemToDisk();
+//                    parser.swapToMem(false);
+                    parser.swapTemp(parser.temp);
+                    parser.SwapDiskToMem();
+                    parser.swapFiletoFile(parser.temp);
                     parser.changeState(pcb1,"Running");
                     parser.Ready.remove(1);
                     System.out.println("Process " + processId + " is Running.");
@@ -81,9 +84,9 @@ public class Scheduler {
                 }
                 else{
 
-                    parser.swapDiskToTemp();
-                    parser.swapMemToDisk();
-                    parser.swapToMem(false);
+                    parser.swapTemp(parser.temp);
+                    parser.SwapDiskToMem();
+                    parser.swapFiletoFile(parser.temp);
                     parser.changeState(pcb2,"Running");
                     parser.Ready.remove(2);
                     System.out.println("Process " + processId + " is Running.");
@@ -99,9 +102,9 @@ public class Scheduler {
                 }
                 else{
 
-                    parser.swapDiskToTemp();
-                    parser.swapMemToDisk();
-                    parser.swapToMem(false);
+                    parser.swapTemp(parser.temp);
+                    parser.SwapDiskToMem();
+                    parser.swapFiletoFile(parser.temp);
                     parser.changeState(pcb3,"Running");
                     parser.Ready.remove(3);
                     System.out.println("Process " + processId + " is Running.");
