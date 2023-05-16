@@ -5,6 +5,7 @@ public class Scheduler {
     static Parser parser=Parser.getInstance();
     PCB pcb1 = null;
     PCB pcb2 = null;
+    PCB pcb3=null;
 
     public PCB getPcb1() {
         return pcb1;
@@ -30,7 +31,7 @@ public class Scheduler {
         this.pcb3 = pcb3;
     }
 
-    PCB pcb3 = null;
+
     int executing;
     static Memory memoryInstance=Memory.getInstance();
 
