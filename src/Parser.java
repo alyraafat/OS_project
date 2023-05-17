@@ -10,7 +10,7 @@ public class Parser {
      String readFile;
      static Memory memoryInstance=Memory.getInstance();
      static String[] memory= memoryInstance.getMemory();
-     Queue<Integer> Ready = new LinkedList<Integer>();
+     static Queue<Integer> Ready = new LinkedList<Integer>();
      static Queue<Integer> generalBlocked = new LinkedList<Integer>();
      Queue<Integer> inputBlocked = new LinkedList<Integer>();
      Queue<Integer> outputBlocked = new LinkedList<Integer>();
@@ -81,27 +81,66 @@ public class Parser {
 //               temp[i] = Disk[i];
 //          }
 //     }
+public static void changePc(int id,int value){
+     if(id==1){
+          scheduler.pcb1.setPc(value);
+     } else if (id==2) {
+          scheduler.pcb2.setPc(value);
+     }else{
+          scheduler.pcb3.setPc(value);
+     }
+
+}
      public static void SwapDiskToMem() throws IOException {
           BufferedReader br = new BufferedReader(new FileReader(harddisk));
           String st;
           int space = spaceAvailable(memory);
-
+          int pcConfirmation=-1;
           if (space == 0) {
-               // file will be inserted from 0 to 20
+               // file will be inserted from 0
                for (int i = 0; i < 5 && ((st = br.readLine()) != null); i++) {
+                    if (i==2){
+                         System.out.println(st);
+                        pcConfirmation= Integer.parseInt(st);
+                        pcConfirmation= 39-pcConfirmation;
+                        if (pcConfirmation<=15){
+                             pcConfirmation=24-pcConfirmation;
+                             System.out.println(pcConfirmation);
+                             memory[i] = String.valueOf(pcConfirmation);
+                             changePc(Integer.parseInt(memory[0]),pcConfirmation);
+                        }else {
+                             memory[i] = st;
+                        }
+                    }else{
+                         System.out.println("noo");
                     memory[i] = st;
+                    }
+
                }
                for (int i = 10; i < 25 && ((st = br.readLine()) != null); i++) {
+                    System.out.println(st);
                     memory[i] = st;
                }
+
                memory[3] = "0";
                memory[4] = "24";
                System.out.println("The process that is swapped from disk to memory is " + memory[0]);
 
           } else if (space == 5) {
-               // 20 to 39
+               // 5
                for (int i = 5; i < 10 && ((st = br.readLine()) != null); i++) {
-                    memory[i] = st;
+                    if (i==7){
+                         pcConfirmation= Integer.parseInt(st);
+                         pcConfirmation= 24-pcConfirmation;
+                         if (pcConfirmation>0){
+                              pcConfirmation=24+(pcConfirmation-10);
+                              memory[i] = String.valueOf(pcConfirmation);
+                              changePc(Integer.parseInt(memory[5]),pcConfirmation);
+                         }else {
+                              memory[i] = st;
+                         }
+                    }else{
+                    memory[i] = st;}
                }
                for (int i = 25; i < 40 && ((st = br.readLine()) != null); i++) {
                     memory[i] = st;
@@ -113,10 +152,26 @@ public class Parser {
                // check not running, swap with it
                File temp = new File("Temp");
                if (!(memory[1].equals("Running"))) {
+
                     swapTemp(temp);
                     // Disk >> Mem
                     for (int i = 0; i < 5 && ((st = br.readLine()) != null); i++) {
-                         memory[i] = st;
+                         if (i==2){
+                              System.out.println(st);
+                              pcConfirmation= Integer.parseInt(st);
+                              pcConfirmation= 39-pcConfirmation;
+                              if (pcConfirmation<=15){
+                                   pcConfirmation=24-pcConfirmation;
+                                   System.out.println(pcConfirmation);
+                                   memory[i] = String.valueOf(pcConfirmation);
+                                   changePc(Integer.parseInt(memory[0]),pcConfirmation);
+                              }else {
+                                   memory[i] = st;
+                              }
+                         }else{
+                              memory[i] = st;
+                         }
+
                     }
                     for (int i = 10; i < 25 && ((st = br.readLine()) != null); i++) {
                          memory[i] = st;
@@ -127,10 +182,25 @@ public class Parser {
                     // temp >> Disk
                     swapFiletoFile(temp);
 
-               } else if (!(memory[6].equals("Running"))) {
+               } else
+                    if (!(memory[6].equals("Running"))) {
                     // Disk >> Mem
                     for (int i = 5; i < 10 && ((st = br.readLine()) != null); i++) {
-                         memory[i] = st;
+                         if (i==7){
+
+                              pcConfirmation= Integer.parseInt(st);
+                              pcConfirmation= 24-pcConfirmation;
+                              if (pcConfirmation>0){
+                                   pcConfirmation=24+(pcConfirmation-10);
+                                   System.out.println(pcConfirmation);
+                                   memory[i] = String.valueOf(pcConfirmation);
+                                   changePc(Integer.parseInt(memory[5]),pcConfirmation);
+                              }else {
+                                   memory[i] = st;
+                              }
+                         }else{
+                              memory[i] = st;}
+
                     }
                     for (int i = 25; i < 40 && ((st = br.readLine()) != null); i++) {
                          memory[i] = st;
@@ -185,7 +255,7 @@ public class Parser {
                     writer.write(data + System.lineSeparator());
                }
           } else {
-               System.out.println("The process that is swapped from memory to disk is "+ memory[20]);
+               System.out.println("The process that is swapped from memory to disk is "+ memory[5]);
                for (int i = 5; i < 10; i++) {
                     String data = memory[i];
                     memory[i] = "";
@@ -200,6 +270,7 @@ public class Parser {
           writer.close();
 
      }
+
      public static int SwapMemToDisk() throws IOException {
           int var = -1;
 
@@ -310,7 +381,7 @@ public class Parser {
 //          }
 //          return emptied;
 //     }
-     public PCB createProcess(String path) throws IOException {
+     public static PCB createProcess(String path) throws IOException {
           boolean wasFull = false;
           int removed=-1;
           int pcbId = -1;
@@ -353,9 +424,9 @@ public class Parser {
 
           PCB pcb = new PCB(pcbId, state, pc, memStart, memEnd);
           memoryInstance.saveInMemory(pcb, path);
-          this.Ready.add(pcb.getpId());
+          Ready.add(pcb.getpId());
           if (wasFull){
-               this.Ready.add(removed);
+               Ready.add(removed);
           }
 
 
@@ -364,6 +435,7 @@ public class Parser {
      }
      public int execute(PCB pcb, int timeSlice) throws IOException {
           int pcValue = pcb.getPc();
+
           String Input="";
           for (int i = pcValue; i < pcValue + timeSlice && i < pcb.getMemEnd(); i++) {
                System.out.println("*******************************" );
@@ -579,7 +651,16 @@ public class Parser {
 //          }
 //          diskWriter.close();
           scheduler = new Scheduler();
-          scheduler.schedule(t1, t2, t3, Q);
+          scheduler.schedule(0, 2, 3, 2);
+//               Parser.createProcess("src/Program_1.txt");
+//               Parser.createProcess("src/Program_2.txt");
+//          memory[2]= String.valueOf(26);
+//               Parser.createProcess("src/Program_3.txt");
+//
+//               SwapDiskToMem();
+
+
+
 
      }
 

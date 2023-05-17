@@ -1,20 +1,20 @@
-1
-Ready
-19
-0
-24
-a = 1
-b = 9
 
-semWait userInput
-assign a input
-assign b input
-semSignal userInput
-semWait userOutput
-printFromTo a b
-semSignal userOutput
-null
-null
-null
-null
-null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
