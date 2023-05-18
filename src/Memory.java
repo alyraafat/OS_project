@@ -33,7 +33,7 @@ public class Memory {
             for (int i = 25; i < 28; i++) {
                 System.out.println(memory[i]);
                 String[] y = memory[i].split(" ");
-                if (y[0].equals( needed)) {
+                if (y[0].equals(needed)) {
                     System.out.println(y[2]);
                     return y[2];
                 }
@@ -84,6 +84,7 @@ public class Memory {
         while((line=br.readLine())!=null){
             memory[counter++] = line;
         }
+        br.close();
     }
     public void printMem(int place){
         int counter=place==0?0:5;
@@ -97,6 +98,7 @@ public class Memory {
         System.out.print("The lower boundary of the process in the memory is " + memory[counter++] + " / ");
         System.out.print("The upper boundary of the process in the memory is " + memory[counter]);
         System.out.println();
+//        counter = place==0?10:25;
         if (place==0){
             counter=10;
         }else{
@@ -110,7 +112,7 @@ public class Memory {
         System.out.println();
         System.out.println("Instructions of the process : ");
         while(true) {
-            if(memory[counter]==null||memory[counter]==""){
+            if(memory[counter]==null||memory[counter].equals("")){
                 break;
             }
             System.out.print(memory[counter++] + " / ");
