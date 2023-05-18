@@ -100,12 +100,10 @@ public static void changePc(int id,int value){
                // file will be inserted from 0
                for (int i = 0; i < 5 && ((st = br.readLine()) != null); i++) {
                     if (i==2){
-                         System.out.println(st);
                         pcConfirmation= Integer.parseInt(st);
                         pcConfirmation= 39-pcConfirmation;
                         if (pcConfirmation<=15){
                              pcConfirmation=24-pcConfirmation;
-                             System.out.println(pcConfirmation);
                              memory[i] = String.valueOf(pcConfirmation);
                              changePc(Integer.parseInt(memory[0]),pcConfirmation);
                         }else {
@@ -272,7 +270,7 @@ public static void changePc(int id,int value){
      }
 
      public static int SwapMemToDisk() throws IOException {
-          int var = -1;
+          int id = -1;
 
           FileWriter writer = new FileWriter(harddisk);
 
@@ -292,7 +290,7 @@ public static void changePc(int id,int value){
                     writer.write(data + System.lineSeparator());
 
                }
-               var = 0;
+               id = 0;
 
           } else {
                System.out.println("The process that is swapped from memory to disk is "+ memory[5]);
@@ -306,11 +304,11 @@ public static void changePc(int id,int value){
                     memory[i] = "";
                     writer.write(data + System.lineSeparator());
                }
-               var = 5;
+               id = 5;
 
           }
           writer.close();
-          return var;
+          return id;
 
      }
 //     public  void swapToMem(boolean disk){
@@ -440,7 +438,7 @@ public static void changePc(int id,int value){
           for (int i = pcValue; i < pcValue + timeSlice && i < pcb.getMemEnd(); i++) {
                System.out.println("*******************************" );
                System.out.println("Clock cycle: " + (++counter));
-               if (memory[i] == null ||memory[i].equals("")) {
+               if (memory[i]==null||memory[i].equals("null")||memory[i].equals("")) {
                     System.out.println("ana henaaaaaaaaaaaaaaaaaaaaaaa");
                     pcb.setPc(pcb.getMemEnd());
                     break;
@@ -462,6 +460,8 @@ public static void changePc(int id,int value){
                          }
 
                      else if (y[2].equals("readFile")) {
+                          //assign b readFile a
+                         System.out.println(memoryInstance.read(pcb, y[3]));
                           systemCall.readFile(memoryInstance.read(pcb, y[3]));
                           systemCall.assign(y[1], readFile, pcb);
                     }
@@ -656,15 +656,15 @@ public static void changePc(int id,int value){
           scheduler.schedule(t1, t2, t3, Q);
 //               Parser.createProcess("src/Program_1.txt");
 //               Parser.createProcess("src/Program_2.txt");
-////          memory[2]= String.valueOf(26);
 //               Parser.createProcess("src/Program_3.txt");
 //
 //               SwapDiskToMem();
 //          System.out.println( memory[24]);
 //
 //          String s=memory[24];
-//          if (s==null||memory[24] == ""){
+//          System.out.println(s);
 //
+//          if (s=="null"){
 //               System.out.println("mahy sha8ala ahe");
 //               System.out.println( memory[24]);
 //          }

@@ -44,7 +44,7 @@ public class Scheduler {
         }
         return instance;
     }
-   public void fixTimigs(int t1, int t2, int t3) throws IOException {
+   public void fixTimings(int t1, int t2, int t3) throws IOException {
         if (t1 < t2 && t1 < t3) {
         pcb1= parser.createProcess("src/Program_1.txt");
         parser.t2=parser.t2-t1;
@@ -90,7 +90,7 @@ public class Scheduler {
 
     public void schedule(int t1, int t2, int t3, int tslice) throws IOException {
         int processId=-1;
-        fixTimigs(t1,t2,t3);
+        fixTimings(t1,t2,t3);
         while (!parser.Ready.isEmpty()) {
 
             processId = parser.Ready.peek();

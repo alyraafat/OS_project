@@ -24,13 +24,17 @@ public class Memory {
             for (int i = 10; i < 13; i++) {
                 String[] y = memory[i].split(" ");
                 if (y[0].equals(needed)) {
+                    //a=p3
+                    System.out.println(y[2]);
                     return y[2];
                 }
             }
         } else if (memory[5].equals(pcb.getpId()+"")) {
-            for (int i = 30; i < 35; i++) {
+            for (int i = 25; i < 28; i++) {
+                System.out.println(memory[i]);
                 String[] y = memory[i].split(" ");
                 if (y[0].equals( needed)) {
+                    System.out.println(y[2]);
                     return y[2];
                 }
             }

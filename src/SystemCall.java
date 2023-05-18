@@ -51,7 +51,7 @@ public class SystemCall {
         System.out.println("Successfully wrote to the file.");
     }
     public static void readFile(String fileName) throws FileNotFoundException {
-        File needed = new File(fileName);
+        File needed = new File("src/"+fileName);
         Scanner myReader = new Scanner(needed);
         parser.readFile=myReader.next();
 
