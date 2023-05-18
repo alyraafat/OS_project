@@ -111,6 +111,7 @@ public class Scheduler {
 //                    parser.swapDiskToTemp();
 //                    parser.swapMemToDisk();
 //                    parser.swapToMem(false);
+
                     parser.swapTemp(parser.temp);
                     parser.SwapDiskToMem();
                     parser.swapFiletoFile(parser.temp);
@@ -191,3 +192,19 @@ public class Scheduler {
 
 
 }
+//   if(parser.spaceAvailable(memoryInstance.getMemory())!=-1){
+//           parser.SwapDiskToMem();
+//           parser.changeState(pcb1,"Running");
+//           parser.Ready.remove(1);
+//           System.out.println("Process " + processId + " is Running.");
+//           executing=parser.execute(pcb1,tslice);
+//           }else{
+//           parser.swapTemp(parser.temp);
+//           parser.SwapDiskToMem();
+//           parser.swapFiletoFile(parser.temp);
+//           parser.changeState(pcb1,"Running");
+//           parser.Ready.remove(1);
+//           System.out.println("Process " + processId + " is Running.");
+//           executing=parser.execute(pcb1,tslice);}
+//
+//           }
