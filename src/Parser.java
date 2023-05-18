@@ -101,15 +101,14 @@ public class Parser {
                for (int i = 0; i < 5 && ((st = br.readLine()) != null); i++) {
                     if (i==2){
                         pcConfirmation= Integer.parseInt(st);
-                        pcConfirmation= 39-pcConfirmation;
-                        // condition??? imageine if pc = 24 the diff will be 15
-                        // so it will wnter the if part
-                        if (pcConfirmation<=15){
-                             pcConfirmation=24-pcConfirmation;
-                             memory[i] = String.valueOf(pcConfirmation);
-                             changePc(Integer.parseInt(memory[0]),pcConfirmation);
+//                        pcConfirmation= 39-pcConfirmation;
+
+                         if (pcConfirmation>24){
+                              pcConfirmation=10+(pcConfirmation-25);
+                              memory[i] = String.valueOf(pcConfirmation);
+                              changePc(Integer.parseInt(memory[0]),pcConfirmation);
                         }else {
-                             memory[i] = st;
+                              memory[i] = st;
                         }
                     }else{
                          memory[i] = st;
@@ -158,9 +157,9 @@ public class Parser {
                          if (i==2){
                               System.out.println(st);
                               pcConfirmation= Integer.parseInt(st);
-                              pcConfirmation= 39-pcConfirmation;
-                              if (pcConfirmation<=15){
-                                   pcConfirmation=24-pcConfirmation;
+//                              pcConfirmation= 39-pcConfirmation;
+                              if (pcConfirmation>24){
+                                   pcConfirmation=10+(pcConfirmation-25);
                                    System.out.println(pcConfirmation);
                                    memory[i] = String.valueOf(pcConfirmation);
                                    changePc(Integer.parseInt(memory[0]),pcConfirmation);
@@ -188,9 +187,8 @@ public class Parser {
                     for (int i = 5; i < 10 && ((st = br.readLine()) != null); i++) {
                          if (i==7){
                               pcConfirmation= Integer.parseInt(st);
-                              pcConfirmation= 24-pcConfirmation;
-                              if (pcConfirmation>0){
-                                   pcConfirmation=24+(pcConfirmation-10);
+                              if (pcConfirmation<25){
+                                   pcConfirmation=25+(pcConfirmation-10);
                                    System.out.println(pcConfirmation);
                                    memory[i] = String.valueOf(pcConfirmation);
                                    changePc(Integer.parseInt(memory[5]),pcConfirmation);
@@ -316,7 +314,6 @@ public class Parser {
           }
           writer.close();
           return id;
-
      }
 //     public  void swapToMem(boolean disk){
 //          int availbleSpace = spaceAvailable(memory);
@@ -433,8 +430,7 @@ public class Parser {
      public int execute(PCB pcb, int timeSlice) throws IOException {
           int pcValue = pcb.getPc();
           String Input="";
-          // mesh el mfrood tb2a <= getMemEnd
-          for (int i = pcValue; i < pcValue + timeSlice && i < pcb.getMemEnd(); i++) {
+          for (int i = pcValue; i < pcValue + timeSlice && i <= pcb.getMemEnd(); i++) {
                System.out.println("*******************************" );
                System.out.println("Clock cycle: " + (++counter));
                if (memory[i]==null||memory[i].equals("null")||memory[i].equals("")) {
@@ -501,8 +497,7 @@ public class Parser {
                     System.out.println("Process 2" + " arrived.");
                     scheduler.pcb2=createProcess("src/Program_2.txt");
                }
-               // mesh el mfrood tb2a if mesh else if 3ashan mmkn kolo yewsal fee nfs el wa2t
-               else if (t3 == 0) {
+               if (t3 == 0) {
                     System.out.println("Process 3" + " arrived.");
                    scheduler.pcb3= createProcess("src/Program_3.txt");
                }
