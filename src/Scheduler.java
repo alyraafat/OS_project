@@ -34,16 +34,63 @@ public class Scheduler {
 
     int executing;
     static Memory memoryInstance=Memory.getInstance();
+    static Scheduler instance=null;
+    private Scheduler(){
+
+    }
+        public static Scheduler getInstance() {
+        if (instance == null){
+            instance = new Scheduler();
+        }
+        return instance;
+    }
+   public void fixTimigs(int t1, int t2, int t3) throws IOException {
+        if (t1 < t2 && t1 < t3) {
+        pcb1= parser.createProcess("src/Program_1.txt");
+        parser.t2=parser.t2-t1;
+        parser.t3=parser.t3-t1;
+        parser.t1 =-1;
+        } else if (t2 < t1 && t2 < t3) {
+        pcb2= parser.createProcess("src/Program_2.txt");
+        parser.t1=parser.t1-t2;
+        parser.t3=parser.t3-t2;
+        parser.t2 =-1;
+        } else if (t3 < t1 && t3 < t2) {
+        pcb3=parser.createProcess("src/Program_3.txt");
+        parser.t2=parser.t2-t3;
+        parser.t1=parser.t1-t3;
+        parser.t3 =-1;
+        } else if (t1==t2&&t2==t3) {
+        pcb1= parser.createProcess("src/Program_1.txt");
+        pcb2= parser.createProcess("src/Program_2.txt");
+        pcb2= parser.createProcess("src/Program_3.txt");
+        parser.t1 =-1;
+        parser.t2 =-1;
+        parser.t3 =-1;
+        } else if (t1==t3) {
+        pcb1= parser.createProcess("src/Program_1.txt");
+        pcb2= parser.createProcess("src/Program_3.txt");
+        parser.t1 =-1;
+        parser.t3 =-1;
+        parser.t2=parser.t2-t3;
+        }else if (t2==t3) {
+        pcb1= parser.createProcess("src/Program_3.txt");
+        pcb2= parser.createProcess("src/Program_2.txt");
+        parser.t2 =-1;
+        parser.t3 =-1;
+        parser.t1=parser.t1-t2;
+        }else if(t1==t2){
+        pcb1= parser.createProcess("src/Program_1.txt");
+        pcb2= parser.createProcess("src/Program_2.txt");
+        parser.t1 =-1;
+        parser.t2 =-1;
+        parser.t3=parser.t3-t2;
+        }
+    }
 
     public void schedule(int t1, int t2, int t3, int tslice) throws IOException {
         int processId=-1;
-        if (t1 < t2 && t1 < t3) {
-            pcb1= parser.createProcess("src/Program_1.txt");
-        } else if (t2 < t1 && t2 < t3) {
-            pcb2= parser.createProcess("src/Program_2.txt");
-        } else if (t3 < t1 && t3 < t2) {
-            pcb3=parser.createProcess("src/Program_3.txt");
-        }
+        fixTimigs(t1,t2,t3);
         while (!parser.Ready.isEmpty()) {
 
             processId = parser.Ready.peek();

@@ -21,7 +21,7 @@ public class Parser {
      static String[] Disk=new String[20];
      static  String[] temp1=new String[20];
      static SystemCall systemCall=new SystemCall();
-     static Scheduler scheduler=new Scheduler();
+     static Scheduler scheduler=Scheduler.getInstance();
      static File harddisk=new File("src/harddisk");
      static File temp=new File("src/temp");
 
@@ -440,7 +440,8 @@ public static void changePc(int id,int value){
           for (int i = pcValue; i < pcValue + timeSlice && i < pcb.getMemEnd(); i++) {
                System.out.println("*******************************" );
                System.out.println("Clock cycle: " + (++counter));
-               if (memory[i]==null) {
+               if (memory[i] == null ||memory[i].equals("")) {
+                    System.out.println("ana henaaaaaaaaaaaaaaaaaaaaaaa");
                     pcb.setPc(pcb.getMemEnd());
                     break;
                }
@@ -515,7 +516,8 @@ public static void changePc(int id,int value){
 
 
           }
-          if(!generalBlocked.contains(pcb.getpId())){
+          boolean finished=((pcb.getPc()==pcb.getMemEnd()));
+          if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
           changeState(pcb,"Ready");
           this.Ready.add(pcb.getpId());
           }
@@ -650,15 +652,22 @@ public static void changePc(int id,int value){
 //               diskWriter.write("" + System.lineSeparator());
 //          }
 //          diskWriter.close();
-          scheduler = new Scheduler();
-          scheduler.schedule(0, 2, 3, 2);
+
+          scheduler.schedule(t1, t2, t3, Q);
 //               Parser.createProcess("src/Program_1.txt");
 //               Parser.createProcess("src/Program_2.txt");
-//          memory[2]= String.valueOf(26);
+////          memory[2]= String.valueOf(26);
 //               Parser.createProcess("src/Program_3.txt");
 //
 //               SwapDiskToMem();
-
+//          System.out.println( memory[24]);
+//
+//          String s=memory[24];
+//          if (s==null||memory[24] == ""){
+//
+//               System.out.println("mahy sha8ala ahe");
+//               System.out.println( memory[24]);
+//          }
 
 
 

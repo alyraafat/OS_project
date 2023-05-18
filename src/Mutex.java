@@ -5,6 +5,7 @@ public class Mutex {
     String owner;
     String mutexName;
     static Parser parser = Parser.getInstance();
+    Scheduler scheduler=Scheduler.getInstance();
 
     public Mutex(String mutexName) {
         this.mutexName = mutexName;
@@ -48,8 +49,15 @@ public class Mutex {
                     int removed = parser.inputBlocked.remove();
                     owner = String.valueOf(removed);
                     parser.generalBlocked.remove();
-                    parser.changeState(pcb, "Ready");
+//                    parser.changeState(pcb, "Ready");
                     parser.Ready.add(removed);
+                    if(removed==1){
+                        parser.changeState(scheduler.pcb1, "Ready");
+                    } else if (removed==2) {
+                        parser.changeState(scheduler.pcb2, "Ready");
+                    }else {
+                        parser.changeState(scheduler.pcb3, "Ready");
+                    }
                 }
 
             } else if (Objects.equals(mutexName, "userOutput")) {
@@ -59,9 +67,16 @@ public class Mutex {
                 } else {
                     int removed = parser.inputBlocked.remove();
                     owner = String.valueOf(removed);
-                    parser.generalBlocked.remove(owner);
+                    parser.generalBlocked.remove();
                     parser.changeState(pcb, "Ready");
                     parser.Ready.add(removed);
+                    if(removed==1){
+                        parser.changeState(scheduler.pcb1, "Ready");
+                    } else if (removed==2) {
+                        parser.changeState(scheduler.pcb2, "Ready");
+                    }else {
+                        parser.changeState(scheduler.pcb3, "Ready");
+                    }
                 }
 
             } else {
@@ -74,6 +89,14 @@ public class Mutex {
                     parser.generalBlocked.remove();
                     parser.changeState(pcb, "Ready");
                     parser.Ready.add(removed);
+
+                    if (removed == 1) {
+                        parser.changeState(scheduler.pcb1, "Ready");
+                    } else if (removed == 2) {
+                        parser.changeState(scheduler.pcb2, "Ready");
+                    } else {
+                        parser.changeState(scheduler.pcb3, "Ready");
+                    }
                 }
             }
         }
