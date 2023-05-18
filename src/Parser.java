@@ -129,10 +129,9 @@ public class Parser {
                for (int i = 5; i < 10 && ((st = br.readLine()) != null); i++) {
                     if (i==7){
                          pcConfirmation= Integer.parseInt(st);
-                         pcConfirmation= 24-pcConfirmation;
                          // imagine pc = 24 so it should enter if part
-                         if (pcConfirmation>0){
-                              pcConfirmation=24+(pcConfirmation-10);
+                         if (pcConfirmation<25){
+                              pcConfirmation=25+(pcConfirmation-10);
                               memory[i] = String.valueOf(pcConfirmation);
                               changePc(Integer.parseInt(memory[5]),pcConfirmation);
                          }else {
@@ -492,8 +491,7 @@ public class Parser {
                     System.out.println("Process 1" + " arrived.");
                     scheduler.pcb1= createProcess("src/Program_1.txt");
                }
-               // mesh el mfrood tb2a if mesh else if 3ashan mmkn kolo yewsal fee nfs el wa2t
-               else if (t2 == 0) {
+               if (t2 == 0) {
                     System.out.println("Process 2" + " arrived.");
                     scheduler.pcb2=createProcess("src/Program_2.txt");
                }

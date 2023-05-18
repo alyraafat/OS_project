@@ -60,12 +60,13 @@ public class Scheduler {
     }
     private void processRunning(String id, int processId, int tslice, PCB pcb) throws IOException {
         if (!parser.memory[0].equals(id) && !parser.memory[5].equals(id)) {
-//                    parser.swapDiskToTemp();
-//                    parser.swapMemToDisk();
-//                    parser.swapToMem(false);
-            parser.swapTemp(parser.temp);
-            parser.swapDiskToMem();
-            parser.swapFileToFile(parser.temp);
+           if(parser.spaceAvailable(memoryInstance.getMemory())==-1){
+                parser.swapTemp(parser.temp);
+                parser.swapDiskToMem();
+                parser.swapFileToFile(parser.temp);
+           }else {
+               parser.swapDiskToMem();
+           }
         }
         parser.changeState(pcb,"Running");
         parser.Ready.remove(Integer.parseInt(id));
@@ -177,4 +178,5 @@ public class Scheduler {
     public void setPcb3(PCB pcb3) {
         this.pcb3 = pcb3;
     }
+
 }
