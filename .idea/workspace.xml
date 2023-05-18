@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="test changes">
-      <change afterPath="$PROJECT_DIR$/src/p3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mutex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SystemCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SystemCall.java" afterDir="false" />
     </list>
-    <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SystemCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SystemCall.java" afterDir="false" />
-    </list>
+    <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,49 +28,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Parser.java">
-      <ranges>
-        <range start1="29" end1="32" start2="29" end2="30" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="83" end1="91" start2="81" end2="89" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="92" end1="93" start2="90" end2="91" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="102" end1="103" start2="100" end2="100" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="107" end1="108" start2="104" end2="104" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="114" end1="116" start2="110" end2="111" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="154" end1="155" start2="149" end2="149" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="187" end1="187" start2="181" end2="182" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="189" end1="190" start2="184" end2="184" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="226" end1="227" start2="220" end2="221" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="238" end1="238" start2="232" end2="233" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="274" end1="275" start2="269" end2="270" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="285" end1="287" start2="280" end2="280" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="292" end1="293" start2="285" end2="285" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="294" end1="295" start2="286" end2="287" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="308" end1="309" start2="300" end2="301" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="312" end1="313" start2="304" end2="305" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="442" end1="443" start2="434" end2="435" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="464" end1="464" start2="456" end2="458" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="527" end1="531" start2="521" end2="521" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="658" end1="659" start2="648" end2="648" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="665" end1="666" start2="654" end2="655" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="667" end1="667" start2="656" end2="657" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Scheduler.java">
-      <ranges>
-        <range start1="7" end1="8" start2="7" end2="8" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="40" end1="45" start2="40" end2="45" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-        <range start1="46" end1="47" start2="46" end2="47" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="92" end1="93" start2="92" end2="93" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/SystemCall.java">
-      <ranges>
-        <range start1="53" end1="54" start2="53" end2="54" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="65" end1="67" start2="65" end2="65" changelist="dedf8e93-63bb-46c3-a0fc-8788888a6815" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

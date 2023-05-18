@@ -10,7 +10,6 @@ public class Mutex {
     public Mutex(String mutexName) {
         this.mutexName = mutexName;
         this.flag = 1;
-
     }
 
     public void semWait(PCB pcb) {
@@ -18,17 +17,13 @@ public class Mutex {
             flag = 0;
             owner = String.valueOf(pcb.getpId());
         } else {
+            parser.changeState(pcb, "Blocked");
+            parser.generalBlocked.add(pcb.getpId());
             if (Objects.equals(mutexName, "userInput")) {
-                parser.changeState(pcb, "Blocked");
-                parser.generalBlocked.add(pcb.getpId());
                 parser.inputBlocked.add(pcb.getpId());
             } else if (Objects.equals(mutexName, "userOutput")) {
-                parser.changeState(pcb, "Blocked");
-                parser.generalBlocked.add(pcb.getpId());
                 parser.outputBlocked.add(pcb.getpId());
             } else if (Objects.equals(mutexName, "file")) {
-                parser.changeState(pcb, "Blocked");
-                parser.generalBlocked.add(pcb.getpId());
                 parser.fileBlocked.add(pcb.getpId());
             }
         }
@@ -65,7 +60,7 @@ public class Mutex {
                     flag = 1;
                     owner = "";
                 } else {
-                    int removed = parser.inputBlocked.remove();
+                    int removed = parser.outputBlocked.remove();
                     owner = String.valueOf(removed);
                     parser.generalBlocked.remove();
                     parser.changeState(pcb, "Ready");
@@ -84,7 +79,7 @@ public class Mutex {
                     flag = 1;
                     owner = "";
                 } else {
-                    int removed = parser.inputBlocked.remove();
+                    int removed = parser.fileBlocked.remove();
                     owner = String.valueOf(removed);
                     parser.generalBlocked.remove();
                     parser.changeState(pcb, "Ready");
