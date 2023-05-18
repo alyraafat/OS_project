@@ -27,9 +27,7 @@ public class Parser {
 
      static int t1,t2,t3;
      private static Parser instance;
-     private Parser(){
-
-     }
+     private Parser(){}
      public static Parser getInstance() {
           if (instance == null){
                instance = new Parser();
@@ -81,16 +79,16 @@ public class Parser {
 //               temp[i] = Disk[i];
 //          }
 //     }
-public static void changePc(int id,int value){
-     if(id==1){
-          scheduler.pcb1.setPc(value);
-     } else if (id==2) {
-          scheduler.pcb2.setPc(value);
-     }else{
-          scheduler.pcb3.setPc(value);
-     }
+     public static void changePc(int id,int value){
+          if(id==1){
+               scheduler.pcb1.setPc(value);
+          } else if (id==2) {
+               scheduler.pcb2.setPc(value);
+          }else{
+               scheduler.pcb3.setPc(value);
+          }
 
-}
+     }
      public static void SwapDiskToMem() throws IOException {
           BufferedReader br = new BufferedReader(new FileReader(harddisk));
           String st;
@@ -110,8 +108,7 @@ public static void changePc(int id,int value){
                              memory[i] = st;
                         }
                     }else{
-                         System.out.println("noo");
-                    memory[i] = st;
+                         memory[i] = st;
                     }
 
                }
@@ -150,7 +147,6 @@ public static void changePc(int id,int value){
                // check not running, swap with it
                File temp = new File("Temp");
                if (!(memory[1].equals("Running"))) {
-
                     swapTemp(temp);
                     // Disk >> Mem
                     for (int i = 0; i < 5 && ((st = br.readLine()) != null); i++) {
@@ -183,9 +179,9 @@ public static void changePc(int id,int value){
                } else
                     if (!(memory[6].equals("Running"))) {
                     // Disk >> Mem
+                    swapTemp(temp);
                     for (int i = 5; i < 10 && ((st = br.readLine()) != null); i++) {
                          if (i==7){
-
                               pcConfirmation= Integer.parseInt(st);
                               pcConfirmation= 24-pcConfirmation;
                               if (pcConfirmation>0){
@@ -222,7 +218,7 @@ public static void changePc(int id,int value){
                diskWriter.write("" + System.lineSeparator());
           }
           diskWriter.close();
-
+          br.close();
           // read from temp
           BufferedReader buffer = new BufferedReader(new FileReader(temp));
           String st;
@@ -234,6 +230,7 @@ public static void changePc(int id,int value){
                writer.write(st + System.lineSeparator());
           }
           writer.close();
+          buffer.close();
      }
 
 
@@ -281,14 +278,11 @@ public static void changePc(int id,int value){
                     String data = memory[i];
                     memory[i] = "";
                     writer.write(data + System.lineSeparator());
-
-
                }
                for(int i = 10; i < 25; i++) {
                     String data = memory[i];
                     memory[i] = "";
                     writer.write(data + System.lineSeparator());
-
                }
                id = 0;
 
@@ -524,10 +518,6 @@ public static void changePc(int id,int value){
 
           return pcb.getPc();
      }
-
-
-
-
 
      public  void changeState(PCB pcb,String state) {
           pcb.setState(state);

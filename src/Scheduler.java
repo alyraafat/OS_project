@@ -5,7 +5,7 @@ public class Scheduler {
     static Parser parser=Parser.getInstance();
     PCB pcb1 = null;
     PCB pcb2 = null;
-    PCB pcb3=null;
+    PCB pcb3 = null;
 
     public PCB getPcb1() {
         return pcb1;
@@ -38,11 +38,11 @@ public class Scheduler {
     private Scheduler(){
 
     }
-        public static Scheduler getInstance() {
-        if (instance == null){
-            instance = new Scheduler();
-        }
-        return instance;
+    public static Scheduler getInstance() {
+    if (instance == null){
+        instance = new Scheduler();
+    }
+    return instance;
     }
    public void fixTimings(int t1, int t2, int t3) throws IOException {
         if (t1 < t2 && t1 < t3) {

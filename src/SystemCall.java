@@ -63,7 +63,5 @@ public class SystemCall {
         for (int i = ++start; i < end; i++) {
             System.out.println(i);
         }
-
-
     }
 }
