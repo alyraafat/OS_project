@@ -208,7 +208,6 @@ public class Parser {
           }
      }
      public static void swapFileToFile(File temp) throws IOException {
-
           // delete contents of Hard Disk
           BufferedReader br = new BufferedReader(new FileReader(hardDisk));
           String x;
@@ -314,74 +313,6 @@ public class Parser {
           writer.close();
           return id;
      }
-//     public  void swapToMem(boolean disk){
-//          int availbleSpace = spaceAvailable(memory);
-//          int j=0;
-//          if (availbleSpace == 0) {
-//               for(int i = 0; i < 5; i++) {
-//                    memory[i] = disk?Disk[j]:temp[j];
-//                    j++;
-//               }
-//               for(int i = 10; i < 25; i++) {
-//                    memory[i] = disk?Disk[j]:temp[j];
-//                    j++;
-//               }
-//               memory[3] = "0";
-//               memory[4] = "24";
-//               System.out.println("process with id "+ memory[0]+ " is swapped from disk to memory");
-//
-//          } else if (availbleSpace == 5) {
-//
-//               for(int i = 5; i < 10; i++) {
-//                    memory[i] = disk?Disk[j]:temp[j];
-//                    j++;
-//               }
-//               for(int i = 25; i < 40; i++) {
-//                    memory[i] = disk?Disk[j]:temp[j];
-//                    j++;
-//               }
-//               memory[8] = "5";
-//               memory[9] = "39";
-//               System.out.println("process with id "+ memory[5]+ " is swapped from disk to memory");
-//          }
-//
-//     }
-
-//     public int swapMemToDisk(){
-//          int emptied=-1;
-//          if (!(memory[1].equals("Running"))) {
-//               System.out.println("process with id "+ memory[0]+ " is swapped From memory to disk");
-//               int j=0;
-//               for (int i = 0; i < 5; i++) {
-//                    Disk[j] = memory[i];
-//                    memory[i] = "";
-//                    j++;
-//
-//               }
-//               for (int i = 10; i < 25; i++) {
-//                    Disk[j] = memory[i];
-//                    memory[i] = "";
-//
-//               }
-//               emptied= 0;
-//            }
-//          else{
-//               System.out.println("process with id "+ memory[5]+ " is swapped from memory to disk");
-//               int j=0;
-//               for (int i = 5; i < 10; i++) {
-//                    Disk[j] = memory[i];
-//                    memory[i] = "";
-//                    j++;
-//               }
-//               for (int i = 25; i < 40; i++) {
-//                    Disk[j] = memory[i];
-//                    memory[i] = "";
-//                    j++;
-//               }
-//               emptied= 5;
-//          }
-//          return emptied;
-//     }
      public static PCB createProcess(String path) throws IOException {
           boolean wasFull = false;
           int removed=-1;
@@ -426,17 +357,23 @@ public class Parser {
           }
           return pcb;
      }
-     public int execute(PCB pcb, int timeSlice) throws IOException {
+     public int execute(PCB pcb, int timeSlice, boolean justArrived) throws IOException {
           int pcValue = pcb.getPc();
           String Input="";
           for (int i = pcValue; i < pcValue + timeSlice && i <= pcb.getMemEnd(); i++) {
-               System.out.println("*******************************" );
-               System.out.println("Clock cycle: " + (++counter));
                if (memory[i]==null||memory[i].equals("null")||memory[i].equals("")) {
                     System.out.println("ana henaaaaaaaaaaaaaaaaaaaaaaa");
                     pcb.setPc(pcb.getMemEnd());
+                    scheduler.fixTimings(true);
                     break;
                }
+               if(!justArrived){
+                    System.out.println("*******************************" );
+                    System.out.println("Clock cycle: " + (++counter));
+                    scheduler.fixTimings(false);
+               }
+               justArrived = false;
+
                String[] y = memory[i].split(" ");
                System.out.println("The Instruction that's currently executing is " + memory[i] + " in Process " + pcb.getpId());
                System.out.println("********");
@@ -483,26 +420,12 @@ public class Parser {
                          file.semSignal(pcb);
                     }
                }
-               t1--;
-               t2--;
-               t3--;
-
-               if (t1 == 0) {
-                    System.out.println("Process 1" + " arrived.");
-                    scheduler.pcb1= createProcess("src/Program_1.txt");
-               }
-               if (t2 == 0) {
-                    System.out.println("Process 2" + " arrived.");
-                    scheduler.pcb2=createProcess("src/Program_2.txt");
-               }
-               if (t3 == 0) {
-                    System.out.println("Process 3" + " arrived.");
-                   scheduler.pcb3= createProcess("src/Program_3.txt");
-               }
-                updatePC(pcb);
+               updatePC(pcb);
+               Scheduler.printAllData();
           }
           // mesh el mfrood tb2a getMemEnd + 1
-          boolean finished=((pcb.getPc()==pcb.getMemEnd()));
+          String currInst = memory[pcb.getPc()];
+          boolean finished=(pcb.getPc()==pcb.getMemEnd()||currInst==null||currInst.equals("")||currInst.equals("null"));
           if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
                changeState(pcb,"Ready");
                this.Ready.add(pcb.getpId());
@@ -510,7 +433,7 @@ public class Parser {
           return pcb.getPc();
      }
 
-     public  void changeState(PCB pcb,String state) {
+     public void changeState(PCB pcb,String state) {
           pcb.setState(state);
           if (pcb.getpId() == 1) {
                changeStateHelper("1",state);
@@ -608,6 +531,74 @@ public class Parser {
           }
           System.out.println();
      }
+     //     public  void swapToMem(boolean disk){
+//          int availbleSpace = spaceAvailable(memory);
+//          int j=0;
+//          if (availbleSpace == 0) {
+//               for(int i = 0; i < 5; i++) {
+//                    memory[i] = disk?Disk[j]:temp[j];
+//                    j++;
+//               }
+//               for(int i = 10; i < 25; i++) {
+//                    memory[i] = disk?Disk[j]:temp[j];
+//                    j++;
+//               }
+//               memory[3] = "0";
+//               memory[4] = "24";
+//               System.out.println("process with id "+ memory[0]+ " is swapped from disk to memory");
+//
+//          } else if (availbleSpace == 5) {
+//
+//               for(int i = 5; i < 10; i++) {
+//                    memory[i] = disk?Disk[j]:temp[j];
+//                    j++;
+//               }
+//               for(int i = 25; i < 40; i++) {
+//                    memory[i] = disk?Disk[j]:temp[j];
+//                    j++;
+//               }
+//               memory[8] = "5";
+//               memory[9] = "39";
+//               System.out.println("process with id "+ memory[5]+ " is swapped from disk to memory");
+//          }
+//
+//     }
+
+     //     public int swapMemToDisk(){
+//          int emptied=-1;
+//          if (!(memory[1].equals("Running"))) {
+//               System.out.println("process with id "+ memory[0]+ " is swapped From memory to disk");
+//               int j=0;
+//               for (int i = 0; i < 5; i++) {
+//                    Disk[j] = memory[i];
+//                    memory[i] = "";
+//                    j++;
+//
+//               }
+//               for (int i = 10; i < 25; i++) {
+//                    Disk[j] = memory[i];
+//                    memory[i] = "";
+//
+//               }
+//               emptied= 0;
+//            }
+//          else{
+//               System.out.println("process with id "+ memory[5]+ " is swapped from memory to disk");
+//               int j=0;
+//               for (int i = 5; i < 10; i++) {
+//                    Disk[j] = memory[i];
+//                    memory[i] = "";
+//                    j++;
+//               }
+//               for (int i = 25; i < 40; i++) {
+//                    Disk[j] = memory[i];
+//                    memory[i] = "";
+//                    j++;
+//               }
+//               emptied= 5;
+//          }
+//          return emptied;
+//     }
      public static void main(String[] args) throws IOException {
         int Q=0;
 //		saveToMemory("D:\\GUC\\CODING\\ProjectOS\\Program_1.txt", 1);
@@ -638,7 +629,7 @@ public class Parser {
 //               diskWriter.write("" + System.lineSeparator());
 //          }
 //          diskWriter.close();
-          scheduler.schedule(t1, t2, t3, Q);
+          scheduler.schedule(Q);
 //               Parser.createProcess("src/Program_1.txt");
 //               Parser.createProcess("src/Program_2.txt");
 //               Parser.createProcess("src/Program_3.txt");

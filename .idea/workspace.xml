@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="test changes">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="changes by aly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
-    <list id="f7ea69ed-7771-451c-a511-9dabadcf5b5d" name="Changes by Biso" comment="">
+    <list id="f7ea69ed-7771-451c-a511-9dabadcf5b5d" name="Changes by Biso" comment="Changes by Biso">
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
     </list>
@@ -30,18 +33,41 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Scheduler.java">
+      <ranges>
+        <range start1="17" end1="19" start2="17" end2="68" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="20" end1="58" start2="69" end2="77" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="59" end1="59" start2="78" end2="79" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="60" end1="61" start2="80" end2="81" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="73" end1="74" start2="93" end2="94" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="76" end1="77" start2="96" end2="98" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="83" end1="84" start2="104" end2="105" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="85" end1="91" start2="106" end2="115" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="92" end1="93" start2="116" end2="118" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="105" end1="108" start2="130" end2="133" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="118" end1="119" start2="143" end2="145" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="129" end1="129" start2="155" end2="160" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
+        <range start1="138" end1="139" start2="169" end2="170" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
+        <range start1="155" end1="155" start2="186" end2="187" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
+        <range start1="156" end1="156" start2="188" end2="189" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="157" end1="157" start2="190" end2="198" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+      </ranges>
+    </file>
     <file path="$PROJECT_DIR$/src/Parser.java">
       <ranges>
-        <range start1="103" end1="110" start2="103" end2="109" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="111" end1="112" start2="110" end2="111" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="132" end1="133" start2="131" end2="131" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
-        <range start1="134" end1="136" start2="132" end2="134" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
-        <range start1="160" end1="163" start2="158" end2="161" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="190" end1="193" start2="188" end2="190" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="318" end1="319" start2="315" end2="315" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="435" end1="437" start2="431" end2="432" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="498" end1="500" start2="493" end2="494" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
-        <range start1="503" end1="505" start2="497" end2="498" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="6" end1="7" start2="6" end2="7" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
+        <range start1="210" end1="211" start2="210" end2="210" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="316" end1="384" start2="315" end2="315" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="428" end1="429" start2="359" end2="360" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="432" end1="434" start2="363" end2="363" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="437" end1="437" start2="366" end2="367" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="438" end1="438" start2="368" end2="373" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="439" end1="439" start2="374" end2="376" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="485" end1="502" start2="422" end2="424" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="504" end1="505" start2="426" end2="428" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="512" end1="513" start2="435" end2="436" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="610" end1="610" start2="533" end2="601" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="640" end1="641" start2="631" end2="632" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
       </ranges>
     </file>
   </component>
@@ -100,6 +126,8 @@
       <workItem from="1684336110563" duration="4499000" />
       <workItem from="1684352951819" duration="6179000" />
       <workItem from="1684409975535" duration="15480000" />
+      <workItem from="1684454183640" duration="5000" />
+      <workItem from="1684497582605" duration="18485000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -255,7 +283,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684447994949</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="changes by aly">
+      <created>1684450159299</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1684450159299</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Changes by Biso">
+      <created>1684450172058</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1684450172058</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +321,8 @@
     <MESSAGE value="swap methods" />
     <MESSAGE value="changes" />
     <MESSAGE value="test changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="test changes" />
+    <MESSAGE value="changes by aly" />
+    <MESSAGE value="Changes by Biso" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by Biso" />
   </component>
 </project>
