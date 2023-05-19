@@ -106,6 +106,7 @@ public class Scheduler {
         int processId=-1;
 //        fixTimings(t1,t2,t3);
         boolean isFirstArrival =true;
+        System.out.println("Clock cycle: " + (++(parser.counter)));
         fixTimings(true);
         printAllData();
         while (!parser.Ready.isEmpty()||isAllArrived()) {

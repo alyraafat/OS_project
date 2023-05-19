@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="changes by aly">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="updateing pcb when swapping">
       <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" afterPath="$PROJECT_DIR$/beso" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neso" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PCB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
@@ -89,7 +83,7 @@
       <workItem from="1684352951819" duration="6179000" />
       <workItem from="1684409975535" duration="15480000" />
       <workItem from="1684454183640" duration="5000" />
-      <workItem from="1684497582605" duration="22226000" />
+      <workItem from="1684497582605" duration="22629000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -273,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684520222555</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="updateing pcb when swapping">
+      <created>1684524756834</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1684524756834</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +300,7 @@
     <MESSAGE value="test changes" />
     <MESSAGE value="changes by aly" />
     <MESSAGE value="Changes by Biso" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Biso" />
+    <MESSAGE value="updateing pcb when swapping" />
+    <option name="LAST_COMMIT_MESSAGE" value="updateing pcb when swapping" />
   </component>
 </project>
