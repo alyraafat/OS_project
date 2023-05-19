@@ -153,6 +153,11 @@ public class Scheduler {
 //                parser.Ready.remove(3);
 //                System.out.println("Process " + processId + " is Running.");
 //                executing=parser.execute(pcb3,tslice);
+            } else{
+                System.out.println("Clock cycle: " + (++(parser.counter)));
+                fixTimings(false);
+                printAllData();
+                isFirstArrival = true;
             }
             if (processId == 1) {
                 processFinished(processId,pcb1,1);
@@ -162,7 +167,7 @@ public class Scheduler {
 //                    System.out.println("Process " + processId + " is finished. ******************");
 //                    parser.Ready.remove(1);
 //                }
-            } else if (processId == 2) {
+            } if (processId == 2) {
                 processFinished(processId,pcb2,2);
 //                if (pcb2.getPc() == pcb2.getMemEnd()) {
 //                    parser.changeState(pcb2,"Finished");
@@ -179,6 +184,7 @@ public class Scheduler {
 //                    parser.Ready.remove(3);
 //                }
             }
+            processId=-1;
         }
         printAllData();
     }

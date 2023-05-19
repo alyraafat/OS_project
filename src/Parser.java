@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Parser {
-     int counter=0;
+     static int counter=0;
      static String input;
      String readFile;
      static Memory memoryInstance=Memory.getInstance();
