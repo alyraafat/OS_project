@@ -91,6 +91,15 @@ public class Parser {
                scheduler.pcb3.setPc(value);
           }
      }
+     public static void updatePCB(int id, int startPCB){
+          if(id==1){
+               scheduler.pcb1.updatePCB(startPCB, memory);
+          } else if (id==2) {
+               scheduler.pcb2.updatePCB(startPCB, memory);
+          }else{
+               scheduler.pcb3.updatePCB(startPCB, memory);
+          }
+     }
      public static void swapDiskToMem() throws IOException {
           BufferedReader br = new BufferedReader(new FileReader(hardDisk));
           String st;
@@ -119,9 +128,9 @@ public class Parser {
                     System.out.println(st);
                     memory[i] = st;
                }
-
                memory[3] = "0";
                memory[4] = "24";
+               updatePCB(Integer.parseInt(memory[0]),0);
                System.out.println("The process that is swapped from disk to memory is " + memory[0]);
 
           } else if (space == 5) {
@@ -138,13 +147,15 @@ public class Parser {
                               memory[i] = st;
                          }
                     }else{
-                    memory[i] = st;}
+                         memory[i] = st;
+                    }
                }
                for (int i = 25; i < 40 && ((st = br.readLine()) != null); i++) {
                     memory[i] = st;
                }
                memory[8] = "5";
                memory[9] = "39";
+               updatePCB(Integer.parseInt(memory[5]),5);
                System.out.println("The process that is swapped from disk to memory is " + memory[5]);
           } else {
                // check not running, swap with it
@@ -175,7 +186,7 @@ public class Parser {
                     }
                     memory[3] = "0";
                     memory[4] = "24";
-
+                    updatePCB(Integer.parseInt(memory[0]),0);
                     // temp >> Disk
                     swapFileToFile(temp);
 
@@ -202,7 +213,8 @@ public class Parser {
                     }
                     memory[8] = "5";
                     memory[9] = "39";
-                    // temp >> Disk
+                    updatePCB(Integer.parseInt(memory[5]),5);
+                         // temp >> Disk
                     swapFileToFile(temp);
                }
           }
@@ -360,6 +372,7 @@ public class Parser {
      public int execute(PCB pcb, int timeSlice, boolean justArrived) throws IOException {
           int pcValue = pcb.getPc();
           String Input="";
+//          System.out.println("pc of process "+pcb.getpId()+": "+pcValue+", mem end: "+pcb.getMemEnd()+", memory: "+memory[pcValue]);
           for (int i = pcValue; i < pcValue + timeSlice && i <= pcb.getMemEnd(); i++) {
                if (memory[i]==null||memory[i].equals("null")||memory[i].equals("")) {
                     System.out.println("ana henaaaaaaaaaaaaaaaaaaaaaaa");
@@ -373,7 +386,6 @@ public class Parser {
                     scheduler.fixTimings(false);
                }
                justArrived = false;
-
                String[] y = memory[i].split(" ");
                System.out.println("The Instruction that's currently executing is " + memory[i] + " in Process " + pcb.getpId());
                System.out.println("********");
