@@ -453,11 +453,15 @@ public class Parser {
                     }
                      else if (y[2].equals("readFile")) {
                           //assign b readFile a
-                         System.out.println(memoryInstance.read(pcb, y[3]));
-                          systemCall.readFile(memoryInstance.read(pcb, y[3]));
                           systemCall.assign(y[1], readFile, pcb);
                     }
-               } else if (y[0].equals("writeFile")) {
+
+               }
+//               else if (y[0].equals("readFile")) {
+//                    systemCall.readFile(memoryInstance.read(pcb, y[1]));
+//
+//               }
+               else if (y[0].equals("writeFile")) {
                     systemCall.writeFile(memoryInstance.read(pcb, y[1]), memoryInstance.read(pcb, y[2]));
 
                } else if (y[0].equals("printFromTo")) {
