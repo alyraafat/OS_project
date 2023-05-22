@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="test changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
-    <list id="f7ea69ed-7771-451c-a511-9dabadcf5b5d" name="Changes by Biso" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
-    </list>
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,22 +27,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Parser.java">
-      <ranges>
-        <range start1="103" end1="110" start2="103" end2="109" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="111" end1="112" start2="110" end2="111" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="132" end1="133" start2="131" end2="131" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
-        <range start1="134" end1="136" start2="132" end2="134" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
-        <range start1="160" end1="163" start2="158" end2="161" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="190" end1="193" start2="188" end2="190" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="318" end1="319" start2="315" end2="315" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="435" end1="437" start2="431" end2="432" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="498" end1="500" start2="493" end2="494" changelist="f7ea69ed-7771-451c-a511-9dabadcf5b5d" />
-        <range start1="503" end1="505" start2="497" end2="498" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -100,6 +83,10 @@
       <workItem from="1684336110563" duration="4499000" />
       <workItem from="1684352951819" duration="6179000" />
       <workItem from="1684409975535" duration="15480000" />
+      <workItem from="1684495140956" duration="1498000" />
+      <workItem from="1684497097143" duration="1229000" />
+      <workItem from="1684695694762" duration="363000" />
+      <workItem from="1684741445645" duration="1842000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -260,6 +247,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

@@ -82,8 +82,19 @@ public class Memory {
         memory[counter++] = "";
 
         while((line=br.readLine())!=null){
-            memory[counter++] = line;
+            String[] y = line.split(" ");
+            if (y[0].equals("assign") && y[2].equals("readFile")) {
+                memory[counter++] = y[2] + " " + y[3];
+                memory[counter] = y[0] + " " + y[1] + " " + y[2];
+            } else if (y[0].equals("assign") && y[2].equals("input")) {
+                memory[counter++] = y[2];
+                memory[counter] = y[0] + " " + y[1] + " " + y[2];
+            } else {
+                memory[counter] = line;
+            }
+            counter++;
         }
+
         br.close();
     }
     public void printMem(int place){
