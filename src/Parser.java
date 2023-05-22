@@ -426,7 +426,7 @@ public class Parser {
           }
           return pcb;
      }
-     public int execute(PCB pcb, int timeSlice) throws IOException {
+     public int execute(PCB pcb, int timeSlice,boolean justArrived) throws IOException {
           int pcValue = pcb.getPc();
           String Input="";
           for (int i = pcValue; i < pcValue + timeSlice && i <= pcb.getMemEnd(); i++) {
