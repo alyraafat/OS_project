@@ -91,7 +91,7 @@ public class Scheduler {
         parser.changeState(pcb,"Running");
         parser.Ready.remove(Integer.parseInt(id));
         System.out.println("Process " + processId + " is Running.");
-        executing=parser.execute(pcb,tslice,justArrived);
+        executing=parser.execute(pcb,tslice);
     }
     private void processFinished(int processId, PCB pcb, int id){
         String currInst = memoryInstance.getMemory()[pcb.getPc()];
