@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="test changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="updateing pcb when swapping">
+      <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" afterPath="$PROJECT_DIR$/beso" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
+    <list id="f7ea69ed-7771-451c-a511-9dabadcf5b5d" name="Changes by Biso" comment="Changes by Biso" />
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +82,8 @@
       <workItem from="1684336110563" duration="4499000" />
       <workItem from="1684352951819" duration="6179000" />
       <workItem from="1684409975535" duration="15480000" />
-      <workItem from="1684495140956" duration="1498000" />
-      <workItem from="1684497097143" duration="1229000" />
-      <workItem from="1684695694762" duration="363000" />
-      <workItem from="1684741445645" duration="1842000" />
+      <workItem from="1684454183640" duration="5000" />
+      <workItem from="1684497582605" duration="22629000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -242,22 +239,46 @@
       <option name="project" value="LOCAL" />
       <updated>1684447994949</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="changes by aly">
+      <created>1684450159299</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1684450159299</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Changes by Biso">
+      <created>1684450172058</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1684450172058</updated>
+    </task>
+    <task id="LOCAL-00025" summary="changes by aly">
+      <created>1684520203855</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1684520203855</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Changes by Biso">
+      <created>1684520222555</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1684520222555</updated>
+    </task>
+    <task id="LOCAL-00027" summary="updateing pcb when swapping">
+      <created>1684524756834</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1684524756834</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -277,6 +298,9 @@
     <MESSAGE value="swap methods" />
     <MESSAGE value="changes" />
     <MESSAGE value="test changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="test changes" />
+    <MESSAGE value="changes by aly" />
+    <MESSAGE value="Changes by Biso" />
+    <MESSAGE value="updateing pcb when swapping" />
+    <option name="LAST_COMMIT_MESSAGE" value="updateing pcb when swapping" />
   </component>
 </project>

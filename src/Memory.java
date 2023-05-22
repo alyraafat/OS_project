@@ -109,12 +109,7 @@ public class Memory {
         System.out.print("The lower boundary of the process in the memory is " + memory[counter++] + " / ");
         System.out.print("The upper boundary of the process in the memory is " + memory[counter]);
         System.out.println();
-//        counter = place==0?10:25;
-        if (place==0){
-            counter=10;
-        }else{
-            counter=25;
-        }
+        counter = place==0?10:25;
 
         System.out.println("Variables  of the process : ");
         System.out.print("First variable : " + memory[counter++] + " / ");
@@ -122,10 +117,7 @@ public class Memory {
         System.out.print("Third variable : " + memory[counter++]);
         System.out.println();
         System.out.println("Instructions of the process : ");
-        while(true) {
-            if(memory[counter]==null||memory[counter].equals("")){
-                break;
-            }
+        while(!(memory[counter]==null||memory[counter].equals("")||memory[counter].equals("null"))) {
             System.out.print(memory[counter++] + " / ");
         }
         System.out.println();

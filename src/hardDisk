@@ -1,10 +1,10 @@
 2
 Ready
-18
+16
 0
 24
-a = basel
-b = easy
+a = beso
+b = 3432
 
 semWait userInput
 assign a input

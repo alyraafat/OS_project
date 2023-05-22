@@ -14,7 +14,12 @@ public class PCB {
         this.memStart = memStart;
         this.memEnd = memEnd;
     }
-
+    public void updatePCB(int startPCB, String[] memory){
+        this.state = memory[startPCB+1];
+        this.pc = Integer.parseInt(memory[startPCB+2]);
+        this.memStart = Integer.parseInt(memory[startPCB+2]);
+        this.memEnd = Integer.parseInt(memory[startPCB+4]);
+    }
 
 
     public int getpId() {

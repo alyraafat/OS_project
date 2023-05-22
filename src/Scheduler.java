@@ -15,50 +15,70 @@ public class Scheduler {
         }
         return instance;
     }
-   public void fixTimings(int t1, int t2, int t3) throws IOException {
-        if (t1 < t2 && t1 < t3) {
-            pcb1= parser.createProcess("src/Program_1.txt");
-            parser.t2=parser.t2-t1;
-            parser.t3=parser.t3-t1;
-            parser.t1 =-1;
-        } else if (t2 < t1 && t2 < t3) {
-            pcb2= parser.createProcess("src/Program_2.txt");
-            parser.t1=parser.t1-t2;
-            parser.t3=parser.t3-t2;
-            parser.t2 =-1;
-        } else if (t3 < t1 && t3 < t2) {
-            pcb3=parser.createProcess("src/Program_3.txt");
-            parser.t2=parser.t2-t3;
-            parser.t1=parser.t1-t3;
-            parser.t3 =-1;
-        } else if (t1==t2&&t2==t3) {
-            pcb1= parser.createProcess("src/Program_1.txt");
-            pcb2= parser.createProcess("src/Program_2.txt");
-            pcb2= parser.createProcess("src/Program_3.txt");
-            parser.t1 =-1;
-            parser.t2 =-1;
-            parser.t3 =-1;
-        } else if (t1==t3) {
-            pcb1= parser.createProcess("src/Program_1.txt");
-            pcb2= parser.createProcess("src/Program_3.txt");
-            parser.t1 =-1;
-            parser.t3 =-1;
-            parser.t2=parser.t2-t3;
-        }else if (t2==t3) {
-            pcb1= parser.createProcess("src/Program_3.txt");
-            pcb2= parser.createProcess("src/Program_2.txt");
-            parser.t2 =-1;
-            parser.t3 =-1;
-            parser.t1=parser.t1-t2;
-        }else if(t1==t2){
-            pcb1= parser.createProcess("src/Program_1.txt");
-            pcb2= parser.createProcess("src/Program_2.txt");
-            parser.t1 =-1;
-            parser.t2 =-1;
-            parser.t3=parser.t3-t2;
+//    public void fixTimings(int t1, int t2, int t3) throws IOException {
+//        if (t1 < t2 && t1 < t3) {
+//            pcb1= parser.createProcess("src/Program_1.txt");
+//            parser.t2=parser.t2-t1;
+//            parser.t3=parser.t3-t1;
+//            parser.t1 =-1;
+//        } else if (t2 < t1 && t2 < t3) {
+//            pcb2= parser.createProcess("src/Program_2.txt");
+//            parser.t1=parser.t1-t2;
+//            parser.t3=parser.t3-t2;
+//            parser.t2 =-1;
+//        } else if (t3 < t1 && t3 < t2) {
+//            pcb3=parser.createProcess("src/Program_3.txt");
+//            parser.t2=parser.t2-t3;
+//            parser.t1=parser.t1-t3;
+//            parser.t3 =-1;
+//        } else if (t1==t2&&t2==t3) {
+//            pcb1= parser.createProcess("src/Program_1.txt");
+//            pcb2= parser.createProcess("src/Program_2.txt");
+//            pcb2= parser.createProcess("src/Program_3.txt");
+//            parser.t1 =-1;
+//            parser.t2 =-1;
+//            parser.t3 =-1;
+//        } else if (t1==t3) {
+//            pcb1= parser.createProcess("src/Program_1.txt");
+//            pcb2= parser.createProcess("src/Program_3.txt");
+//            parser.t1 =-1;
+//            parser.t3 =-1;
+//            parser.t2=parser.t2-t3;
+//        }else if (t2==t3) {
+//            pcb1= parser.createProcess("src/Program_3.txt");
+//            pcb2= parser.createProcess("src/Program_2.txt");
+//            parser.t2 =-1;
+//            parser.t3 =-1;
+//            parser.t1=parser.t1-t2;
+//        }else if(t1==t2){
+//            pcb1= parser.createProcess("src/Program_1.txt");
+//            pcb2= parser.createProcess("src/Program_2.txt");
+//            parser.t1 =-1;
+//            parser.t2 =-1;
+//            parser.t3=parser.t3-t2;
+//        }
+//    }
+    public void fixTimings(boolean isFirstCycle) throws IOException{
+        if(!isFirstCycle){
+            parser.t1--;
+            parser.t2--;
+            parser.t3--;
         }
+        if (parser.t1 == 0) {
+            System.out.println("Process 1" + " arrived.");
+            pcb1= parser.createProcess("src/Program_1.txt");
+        }
+        if (parser.t2 == 0) {
+            System.out.println("Process 2" + " arrived.");
+            pcb2=parser.createProcess("src/Program_2.txt");
+        }
+        if (parser.t3 == 0) {
+            System.out.println("Process 3" + " arrived.");
+            pcb3= parser.createProcess("src/Program_3.txt");
+        }
+//        printAllData();
     }
-    private void processRunning(String id, int processId, int tslice, PCB pcb) throws IOException {
+    private void processRunning(String id, int processId, int tslice, PCB pcb, boolean justArrived) throws IOException {
         if (!parser.memory[0].equals(id) && !parser.memory[5].equals(id)) {
            if(parser.spaceAvailable(memoryInstance.getMemory())==-1){
                 parser.swapTemp(parser.temp);
@@ -71,26 +91,32 @@ public class Scheduler {
         parser.changeState(pcb,"Running");
         parser.Ready.remove(Integer.parseInt(id));
         System.out.println("Process " + processId + " is Running.");
-        executing=parser.execute(pcb,tslice);
+        executing=parser.execute(pcb,tslice,justArrived);
     }
     private void processFinished(int processId, PCB pcb, int id){
-        if (pcb.getPc() == pcb.getMemEnd()) {
+        String currInst = memoryInstance.getMemory()[pcb.getPc()];
+        if (pcb.getPc() == pcb.getMemEnd()||currInst==null||currInst.equals("")||currInst.equals("null")) {
             parser.changeState(pcb,"Finished");
             memoryInstance.emptyMemory(pcb);
             System.out.println("Process " + processId + " is finished. ******************");
             parser.Ready.remove(id);
         }
     }
-    public void schedule(int t1, int t2, int t3, int tslice) throws IOException {
+    public void schedule(int tslice) throws IOException {
         int processId=-1;
-        fixTimings(t1,t2,t3);
-        while (!parser.Ready.isEmpty()) {
-            processId = parser.Ready.peek();
-            parser.printQueues();
-            memoryInstance.printMem(0);
-            memoryInstance.printMem(1);
+//        fixTimings(t1,t2,t3);
+        boolean isFirstArrival =true;
+        System.out.println("Clock cycle: " + (++(parser.counter)));
+        fixTimings(true);
+        printAllData();
+        while (!parser.Ready.isEmpty()||isAllArrived()) {
+            if(!parser.Ready.isEmpty()){
+                processId = parser.Ready.peek();
+            }
+//            printAllData();
             if (processId == 1) {
-                processRunning("1",processId,tslice,pcb1);
+                processRunning("1",processId,tslice,pcb1,isFirstArrival);
+                isFirstArrival = false;
 //                if (!parser.memory[0].equals("1") && !parser.memory[5].equals("1")) {
 ////                    parser.swapDiskToTemp();
 ////                    parser.swapMemToDisk();
@@ -103,9 +129,9 @@ public class Scheduler {
 //                parser.Ready.remove(1);
 //                System.out.println("Process " + processId + " is Running.");
 //                executing=parser.execute(pcb1,tslice);
-            }
-            else if (processId == 2) {
-                processRunning("2",processId,tslice,pcb2);
+            } else if (processId == 2) {
+                processRunning("2",processId,tslice,pcb2,isFirstArrival);
+                isFirstArrival = false;
 //                if (!parser.memory[0].equals("2") && !parser.memory[5].equals("2")) {
 //                    parser.swapTemp(parser.temp);
 //                    parser.SwapDiskToMem();
@@ -116,7 +142,8 @@ public class Scheduler {
 //                System.out.println("Process " + processId + " is Running.");
 //                executing=parser.execute(pcb2,tslice);
             } else if (processId == 3) {
-                processRunning("3",processId,tslice,pcb3);
+                processRunning("3",processId,tslice,pcb3,isFirstArrival);
+                isFirstArrival = false;
 //                if (!parser.memory[0].equals("3") && !parser.memory[5].equals("3")) {
 //
 //                    parser.swapTemp(parser.temp);
@@ -127,6 +154,11 @@ public class Scheduler {
 //                parser.Ready.remove(3);
 //                System.out.println("Process " + processId + " is Running.");
 //                executing=parser.execute(pcb3,tslice);
+            } else{
+                System.out.println("Clock cycle: " + (++(parser.counter)));
+                fixTimings(false);
+                printAllData();
+                isFirstArrival = true;
             }
             if (processId == 1) {
                 processFinished(processId,pcb1,1);
@@ -136,7 +168,7 @@ public class Scheduler {
 //                    System.out.println("Process " + processId + " is finished. ******************");
 //                    parser.Ready.remove(1);
 //                }
-            } else if (processId == 2) {
+            } if (processId == 2) {
                 processFinished(processId,pcb2,2);
 //                if (pcb2.getPc() == pcb2.getMemEnd()) {
 //                    parser.changeState(pcb2,"Finished");
@@ -153,7 +185,17 @@ public class Scheduler {
 //                    parser.Ready.remove(3);
 //                }
             }
+            processId=-1;
         }
+        printAllData();
+    }
+    public static void printAllData(){
+        parser.printQueues();
+        memoryInstance.printMem(0);
+        memoryInstance.printMem(1);
+    }
+    public boolean isAllArrived(){
+        return pcb1==null||pcb2==null||pcb3==null;
     }
     public PCB getPcb1() {
         return pcb1;

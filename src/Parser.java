@@ -4,12 +4,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Parser {
-     String taken;
-     String input1;
-     String input2;
-     String input3;
-
-     static int counter=0;
+     int counter=0;
      static String input;
      String readFile;
      static Memory memoryInstance=Memory.getInstance();
@@ -447,31 +442,14 @@ public class Parser {
                System.out.println("********");
                if (y[0].equals("print")) {
                     systemCall.print( pcb,y[1]);
-               }else if (y[0].equals("input")) {
-                    System.out.println("Please enter an input: ");
-                    Scanner sc = new Scanner(System.in);
-                    taken = sc.nextLine();
-                    if (pcb.getpId() == 1) {
-                         input1 = taken;
-                    } else if (pcb.getpId() == 2) {
-                         input2 = taken;
-                    } else if (pcb.getpId() == 3) {
-                         input3 = taken;
-                    }
                }
                else if (y[0].equals("assign")) {
                     if (y[2].equals("input")) {
-//                         System.out.println("Please enter an input: ");
-//                         Scanner sc = new Scanner(System.in);
-//                         Input = sc.nextLine();
-//                         input=Input;
-                         if (pcb.getpId() == 1) {
-                              systemCall.assign(y[1], input1, pcb);
-                         } else if (pcb.getpId() == 2) {
-                              systemCall.assign(y[1], input2, pcb);
-                         } else if (pcb.getpId() == 3) {
-                              systemCall.assign(y[1], input3, pcb);
-                         }
+                         System.out.println("Please enter an input: ");
+                         Scanner sc = new Scanner(System.in);
+                         Input = sc.nextLine();
+                         input=Input;
+                         systemCall.assign(y[1], input, pcb);
                     }
                      else if (y[2].equals("readFile")) {
                           //assign b readFile a
@@ -660,7 +638,7 @@ public class Parser {
 //               diskWriter.write("" + System.lineSeparator());
 //          }
 //          diskWriter.close();
-          scheduler.schedule(t1, t2, t3, Q);
+          scheduler.schedule( Q);
 //               Parser.createProcess("src/Program_1.txt");
 //               Parser.createProcess("src/Program_2.txt");
 //               Parser.createProcess("src/Program_3.txt");
