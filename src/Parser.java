@@ -87,11 +87,11 @@ public class Parser {
 //     }
      public static void changePc(int id,int value){
           if(id==1){
-               scheduler.pcb1.setPc(value);
+               Scheduler.pcb1.setPc(value);
           } else if (id==2) {
-               scheduler.pcb2.setPc(value);
+              Scheduler.pcb2.setPc(value);
           }else{
-               scheduler.pcb3.setPc(value);
+               Scheduler.pcb3.setPc(value);
           }
      }
      public static void swapDiskToMem() throws IOException {
@@ -556,7 +556,8 @@ public class Parser {
           boolean finished=(pcb.getPc()==(pcb.getMemEnd()+1)||currInst==null||currInst.equals("")||currInst.equals("null"));
           if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
                changeState(pcb,"Ready");
-               this.Ready.add(pcb.getpId());
+
+               Ready.add(pcb.getpId());
           }
           return pcb.getPc();
      }
