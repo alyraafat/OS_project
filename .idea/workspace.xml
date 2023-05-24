@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="..">
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="instructions decomposition">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
@@ -81,7 +81,7 @@
       <workItem from="1684409975535" duration="15480000" />
       <workItem from="1684454183640" duration="5000" />
       <workItem from="1684497582605" duration="22629000" />
-      <workItem from="1684751483192" duration="877000" />
+      <workItem from="1684751483192" duration="2128000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -293,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684752307425</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="instructions decomposition">
+      <created>1684752640049</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1684752640049</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +329,7 @@
     <MESSAGE value="updateing pcb when swapping" />
     <MESSAGE value="instructions decomposed." />
     <MESSAGE value=".." />
-    <option name="LAST_COMMIT_MESSAGE" value=".." />
+    <MESSAGE value="instructions decomposition" />
+    <option name="LAST_COMMIT_MESSAGE" value="instructions decomposition" />
   </component>
 </project>
