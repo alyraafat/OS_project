@@ -6,6 +6,7 @@ import java.io.IOException;
 public class Memory {
     private static String memory[];
     private static Memory instance;
+    private static Parser parser=Parser.getInstance();
 
 
     private Memory() {
@@ -25,16 +26,16 @@ public class Memory {
                 String[] y = memory[i].split(" ");
                 if (y[0].equals(needed)) {
                     //a=p3
-                    System.out.println(y[2]);
+//                    System.out.println(y[2]);
                     return y[2];
                 }
             }
         } else if (memory[5].equals(pcb.getpId()+"")) {
             for (int i = 25; i < 28; i++) {
-                System.out.println(memory[i]);
+//                System.out.println(memory[i]);
                 String[] y = memory[i].split(" ");
                 if (y[0].equals(needed)) {
-                    System.out.println(y[2]);
+//                    System.out.println(y[2]);
                     return y[2];
                 }
             }
@@ -85,7 +86,7 @@ public class Memory {
             String[] y = line.split(" ");
             if (y[0].equals("assign") && y[2].equals("readFile")) {
                 memory[counter++] = y[2] + " " + y[3];
-                memory[counter] = y[0] + " " + y[1] + " " + y[2];
+                memory[counter] = y[0] + " " + y[1] + " " + y[2] + " "+y[3];
             } else if (y[0].equals("assign") && y[2].equals("input")) {
                 memory[counter++] = y[2];
                 memory[counter] = y[0] + " " + y[1] + " " + y[2];
@@ -122,6 +123,14 @@ public class Memory {
         }
         System.out.println();
         System.out.println("*******************************");
+    }
+    public int blockedInMemory(){
+        if (Parser.generalBlocked.contains(Integer.parseInt(memory[0]))){
+            return 0;
+        }else if(Parser.generalBlocked.contains(Integer.parseInt(memory[5]))){
+            return 5;
+        }else{
+        return -1;}
     }
     public static Memory getInstance() {
         if (instance == null){

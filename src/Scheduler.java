@@ -110,6 +110,7 @@ public class Scheduler {
         fixTimings(true);
         printAllData();
         while (!parser.Ready.isEmpty()||isAllArrived()) {
+//            printAllData();
             if(!parser.Ready.isEmpty()){
                 processId = parser.Ready.peek();
             }

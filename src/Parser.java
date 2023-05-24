@@ -15,9 +15,9 @@ public class Parser {
      static String[] memory= memoryInstance.getMemory();
      static Queue<Integer> Ready = new LinkedList<Integer>();
      static Queue<Integer> generalBlocked = new LinkedList<Integer>();
-     Queue<Integer> inputBlocked = new LinkedList<Integer>();
-     Queue<Integer> outputBlocked = new LinkedList<Integer>();
-     Queue<Integer> fileBlocked = new LinkedList<Integer>();
+     static Queue<Integer> inputBlocked = new LinkedList<Integer>();
+     static Queue<Integer> outputBlocked = new LinkedList<Integer>();
+     static Queue<Integer> fileBlocked = new LinkedList<Integer>();
      static Mutex userInput = new Mutex("userInput");
      static Mutex userOutput = new Mutex("userOutput");
      static Mutex file = new Mutex("file");
@@ -77,6 +77,7 @@ public class Parser {
                return 5;
           } else{
                return -1;
+
           }
      }
 
@@ -239,8 +240,9 @@ public class Parser {
 
      public static void swapTemp(File temp) throws IOException {
           FileWriter writer = new FileWriter(temp);
-          if (!(memory[1].equals("Running"))) {
-               swapMemToDiskHelper(writer,0,5,10,25);
+          if (memoryInstance.blockedInMemory()==-1) {
+               if (!(memory[1].equals("Running"))) {
+                    swapMemToDiskHelper(writer, 0, 5, 10, 25);
 //               System.out.println("The process that is swapped from memory to disk is "+ memory[0]);
 //               for (int i = 0; i < 5; i++) {
 //                    String data = memory[i];
@@ -252,8 +254,8 @@ public class Parser {
 //                    memory[i] = "";
 //                    writer.write(data + System.lineSeparator());
 //               }
-          } else {
-               swapMemToDiskHelper(writer,5,10,25,40);
+               } else {
+                    swapMemToDiskHelper(writer, 5, 10, 25, 40);
 //               System.out.println("The process that is swapped from memory to disk is "+ memory[5]);
 //               for (int i = 5; i < 10; i++) {
 //                    String data = memory[i];
@@ -265,9 +267,14 @@ public class Parser {
 //                    memory[i] = "";
 //                    writer.write(data + System.lineSeparator());
 //               }
+               }
+
+          }else if(memoryInstance.blockedInMemory()==0){
+               swapMemToDiskHelper(writer, 0, 5, 10, 25);
+          }else{
+               swapMemToDiskHelper(writer, 5, 10, 25, 40);
           }
           writer.close();
-
      }
      private static int swapMemToDiskHelper(FileWriter writer, int startPCB,int endPCB, int startInst, int endInst) throws IOException {
           System.out.println("The process that is swapped from memory to disk is "+ memory[startPCB]);
@@ -437,7 +444,6 @@ public class Parser {
                System.out.println("*******************************" );
                System.out.println("Clock cycle: " + (++counter));
                if (memory[i]==null||memory[i].equals("null")||memory[i].equals("")) {
-                    System.out.println("ana henaaaaaaaaaaaaaaaaaaaaaaa");
                     pcb.setPc(pcb.getMemEnd());
                     break;
                }

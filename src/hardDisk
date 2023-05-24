@@ -1,20 +1,20 @@
-2
-Ready
-16
+1
+Blocked
+14
 0
 24
-a = beso
-b = 3432
+
+
 
 semWait userInput
+input
 assign a input
+input
 assign b input
 semSignal userInput
-semWait file
-writeFile a b
-semSignal file
-null
-null
+semWait userOutput
+printFromTo a b
+semSignal userOutput
 null
 null
 null
