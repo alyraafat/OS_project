@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="instructions decomposition">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="testing cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" afterPath="$PROJECT_DIR$/beso" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mutex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SystemCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SystemCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
+    <list id="bda129a9-4220-43b9-aca8-2041d07c15d7" name="Changes by Biso" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+    </list>
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +35,43 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Parser.java">
+      <ranges>
+        <range start1="6" end1="15" start2="6" end2="13" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="23" end1="25" start2="21" end2="23" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="26" end1="27" start2="24" end2="25" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="30" end1="38" start2="28" end2="36" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="91" end1="92" start2="89" end2="90" changelist="bda129a9-4220-43b9-aca8-2041d07c15d7" />
+        <range start1="93" end1="94" start2="91" end2="92" changelist="bda129a9-4220-43b9-aca8-2041d07c15d7" />
+        <range start1="95" end1="96" start2="93" end2="94" changelist="bda129a9-4220-43b9-aca8-2041d07c15d7" />
+        <range start1="129" end1="129" start2="127" end2="128" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="152" end1="152" start2="151" end2="152" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="182" end1="183" start2="182" end2="183" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="209" end1="210" start2="209" end2="211" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="214" end1="214" start2="215" end2="225" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="242" end1="243" start2="253" end2="254" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="271" end1="272" start2="282" end2="283" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="432" end1="433" start2="443" end2="444" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="439" end1="440" start2="450" end2="451" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="444" end1="445" start2="455" end2="455" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="447" end1="447" start2="457" end2="458" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="449" end1="449" start2="460" end2="467" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="487" end1="488" start2="505" end2="506" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="491" end1="492" start2="509" end2="510" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="516" end1="532" start2="534" end2="550" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="533" end1="533" start2="551" end2="552" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="535" end1="536" start2="554" end2="556" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="538" end1="539" start2="558" end2="560" changelist="bda129a9-4220-43b9-aca8-2041d07c15d7" />
+        <range start1="543" end1="544" start2="564" end2="565" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="578" end1="579" start2="599" end2="600" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="584" end1="585" start2="605" end2="607" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="586" end1="587" start2="608" end2="610" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="588" end1="589" start2="611" end2="613" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+        <range start1="671" end1="672" start2="695" end2="696" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -344,17 +387,7 @@
     <MESSAGE value="instructions decomposed." />
     <MESSAGE value=".." />
     <MESSAGE value="instructions decomposition" />
-    <option name="LAST_COMMIT_MESSAGE" value="instructions decomposition" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Parser.java</url>
-          <line>245</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="testing cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing cases" />
   </component>
 </project>
