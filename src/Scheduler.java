@@ -94,12 +94,13 @@ public class Scheduler {
         executing=Parser.execute(pcb,tslice,justArrived);
     }
     private static void processFinished(int processId, PCB pcb, int id){
-        String currInst = Memory.memory[pcb.getPc()];
-        if (pcb.getPc() == (pcb.getMemEnd()+1)||currInst==null||currInst.equals("")||currInst.equals("null")) {
+        if (pcb.getPc() == (pcb.getMemEnd()+1)||Memory.memory[pcb.getPc()]==null||Memory.memory[pcb.getPc()].equals("")||Memory.memory[pcb.getPc()].equals("null")) {
             Parser.changeState(pcb,"Finished");
-            Memory.emptyMemory(pcb);
+//            Memory.emptyMemory(pcb);
             System.out.println("Process " + processId + " is finished. ******************");
             Parser.Ready.remove(id);
+            Memory.printMem(0);
+            Memory.printMem(1);
         }
     }
     public static void schedule(int tslice) throws IOException {

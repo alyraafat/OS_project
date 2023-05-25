@@ -69,9 +69,9 @@ public class Parser {
      }
 
      public static int spaceAvailable(String[] mem) {
-          if (mem[0]==null|| mem[0].equals("")) {
+          if (mem[0]==null|| mem[0].equals("") || mem[1].equalsIgnoreCase("Finished")) {
                return 0;
-          } else if (mem[5]==null || mem[5].equals("")) {
+          } else if (mem[5]==null || mem[5].equals("") || mem[6].equalsIgnoreCase("Finished")) {
                return 5;
           } else{
                return -1;
@@ -552,11 +552,10 @@ public class Parser {
                Scheduler.printAllData();
           }
           // mesh el mfrood tb2a getMemEnd + 1
-          String currInst = memory[pcb.getPc()];
-          boolean finished=(pcb.getPc()==(pcb.getMemEnd()+1)||currInst==null||currInst.equals("")||currInst.equals("null"));
+
+          boolean finished=(pcb.getPc()==(pcb.getMemEnd()+1)||memory[pcb.getPc()]==null||memory[pcb.getPc()].equals("")||memory[pcb.getPc()].equals("null"));
           if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
                changeState(pcb,"Ready");
-
                Ready.add(pcb.getpId());
           }
           return pcb.getPc();

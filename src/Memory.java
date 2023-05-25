@@ -118,7 +118,7 @@ public class Memory {
         System.out.print("Third variable : " + memory[counter++]);
         System.out.println();
         System.out.println("Instructions of the process : ");
-        while(!(memory[counter]==null||memory[counter].equals("")||memory[counter].equals("null"))) {
+        while(!(counter>=memory.length||memory[counter]==null||memory[counter].equals("")||memory[counter].equals("null"))) {
             System.out.print(memory[counter++] + " / ");
         }
         System.out.println();
