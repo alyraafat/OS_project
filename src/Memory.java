@@ -4,14 +4,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Memory {
-    static String memory[] =  new String[40];
+    static String memory[];
 //    private static Memory instance;
 //    private static Parser parser;
 
 
-//    public Memory() {
-//        this.memory= new String[40];
-//    }
+    public Memory() {
+        this.memory= new String[40];
+    }
 
     public  String[] getMemory() {
         return memory;

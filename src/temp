@@ -11,10 +11,10 @@ input
 assign a input
 input
 assign b input
+input
+assign c input
+input
+assign b input
 semSignal userInput
 semWait userOutput
 printFromTo a b
-semSignal userOutput
-null
-null
-null

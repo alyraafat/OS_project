@@ -4,18 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="process finished case han">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="handling ready queue with creating process">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" afterPath="$PROJECT_DIR$/beso" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mutex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SystemCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SystemCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
-    <list id="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" name="Changes by Biso" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-    </list>
+    <list id="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" name="Changes by Biso" comment="Changes by Biso" />
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,21 +33,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Parser.java">
-      <ranges>
-        <range start1="6" end1="6" start2="6" end2="8" changelist="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" />
-        <range start1="427" end1="431" start2="429" end2="433" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="445" end1="450" start2="447" end2="456" changelist="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" />
-        <range start1="462" end1="462" start2="468" end2="469" changelist="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" />
-        <range start1="464" end1="465" start2="471" end2="472" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="466" end1="466" start2="473" end2="479" changelist="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" />
-        <range start1="468" end1="469" start2="481" end2="481" changelist="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" />
-        <range start1="536" end1="553" start2="548" end2="549" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-        <range start1="561" end1="562" start2="557" end2="563" changelist="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -106,6 +93,9 @@
       <workItem from="1684497582605" duration="22629000" />
       <workItem from="1684751483192" duration="2128000" />
       <workItem from="1684950571170" duration="5217000" />
+      <workItem from="1685048731617" duration="568000" />
+      <workItem from="1685049701338" duration="1637000" />
+      <workItem from="1685051548089" duration="3872000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -345,7 +335,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684966852447</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="handling ready queue with creating process">
+      <created>1685027083840</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685027083840</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Changes by Biso">
+      <created>1685027093446</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1685027093446</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,6 +379,7 @@
     <MESSAGE value=".." />
     <MESSAGE value="instructions decomposition" />
     <MESSAGE value="testing cases" />
+    <MESSAGE value="handling ready queue with creating process" />
     <MESSAGE value="Changes by Biso" />
     <option name="LAST_COMMIT_MESSAGE" value="Changes by Biso" />
   </component>

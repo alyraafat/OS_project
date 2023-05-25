@@ -47,7 +47,7 @@ public class Mutex {
                 System.out.println(" not emptyyyyyyyyyyyyyy");
                 int removed = this.blocked.remove();
                 owner = String.valueOf(removed);
-                Parser.generalBlocked.remove();
+                Parser.generalBlocked.remove(removed);
 //                    Parser.changeState(pcb, "Ready");
                 Parser.Ready.add(removed);
                 if(removed==1){

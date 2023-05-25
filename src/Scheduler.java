@@ -79,7 +79,7 @@ public class Scheduler {
 //        printAllData();
     }
     private static void processRunning(String id, int processId, int tslice, PCB pcb, boolean justArrived) throws IOException {
-        if (!Parser.memory[0].equals(id) && !Parser.memory[5].equals(id)) {
+        if (!Memory.memory[0].equals(id) && !Memory.memory[5].equals(id)) {
            if(Parser.spaceAvailable(Memory.memory)==-1){
                 Parser.swapTemp(Parser.temp);
                 Parser.swapDiskToMem();
@@ -89,8 +89,9 @@ public class Scheduler {
            }
         }
         Parser.changeState(pcb,"Running");
+        Parser.printQueues();
         Parser.Ready.remove(Integer.parseInt(id));
-        System.out.println("Process " + processId + " is Running.");
+//        System.out.println("Process " + processId + " is Running.");
         executing=Parser.execute(pcb,tslice,justArrived);
     }
     public static void readyQueueSwap(int id){
@@ -128,8 +129,8 @@ public class Scheduler {
 //            Memory.emptyMemory(pcb);
             System.out.println("Process " + processId + " is finished. ******************");
             Parser.Ready.remove(id);
-            Memory.printMem(0);
-            Memory.printMem(1);
+            printAllData();
+
         }
     }
     public static void schedule(int tslice) throws IOException {
