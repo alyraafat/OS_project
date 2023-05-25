@@ -1,7 +1,10 @@
 semWait userInput
-assign a input
-assign b input
+assign x input
+assign z input
+semSignal userInput
+semWait userInput
+assign y input
 semSignal userInput
 semWait userOutput
-printFromTo a b
+printFromTo y z
 semSignal userOutput

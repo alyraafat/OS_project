@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="blocked options">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="testing cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" afterPath="$PROJECT_DIR$/beso" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
@@ -82,7 +88,7 @@
       <workItem from="1684454183640" duration="5000" />
       <workItem from="1684497582605" duration="22629000" />
       <workItem from="1684751483192" duration="2128000" />
-      <workItem from="1684950571170" duration="9061000" />
+      <workItem from="1684950571170" duration="5217000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -308,14 +314,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684950594997</updated>
     </task>
-    <task id="LOCAL-00033" summary="blocked options">
-      <created>1684956225572</created>
+    <task id="LOCAL-00033" summary="testing cases">
+      <created>1684966773404</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1684956225572</updated>
+      <updated>1684966773405</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Changes by Biso">
+      <created>1684966852447</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1684966852447</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,23 +353,12 @@
     <MESSAGE value="changes" />
     <MESSAGE value="test changes" />
     <MESSAGE value="changes by aly" />
-    <MESSAGE value="Changes by Biso" />
     <MESSAGE value="updateing pcb when swapping" />
     <MESSAGE value="instructions decomposed." />
     <MESSAGE value=".." />
     <MESSAGE value="instructions decomposition" />
-    <MESSAGE value="blocked options" />
-    <option name="LAST_COMMIT_MESSAGE" value="blocked options" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Parser.java</url>
-          <line>245</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="testing cases" />
+    <MESSAGE value="Changes by Biso" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by Biso" />
   </component>
 </project>

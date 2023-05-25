@@ -8,13 +8,13 @@ Blocked
 
 semWait userInput
 input
-assign a input
+assign x input
 input
-assign b input
+assign z input
+semSignal userInput
+semWait userInput
+input
+assign y input
 semSignal userInput
 semWait userOutput
-printFromTo a b
-semSignal userOutput
-null
-null
-null
+printFromTo y z

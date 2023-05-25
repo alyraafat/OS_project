@@ -4,23 +4,23 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Memory {
-    private static String memory[];
-    private static Memory instance;
-    private static Parser parser=Parser.getInstance();
+    static String memory[] =  new String[40];
+//    private static Memory instance;
+//    private static Parser parser;
 
 
-    private Memory() {
-    this.memory= new String[40];
-    }
+//    public Memory() {
+//        this.memory= new String[40];
+//    }
 
     public  String[] getMemory() {
         return memory;
     }
 
-    public static void setMemory(String[] memory) {
-        Memory.memory = memory;
+    public void setMemory(String[] memory) {
+        this.memory = memory;
     }
-    public String read(PCB pcb, String needed) {
+    public static String read(PCB pcb, String needed) {
         if (memory[0].equals(pcb.getpId()+"")) {
             for (int i = 10; i < 13; i++) {
                 String[] y = memory[i].split(" ");
@@ -43,7 +43,7 @@ public class Memory {
         }
         return needed;
     }
-    public void emptyMemory(PCB pcb) {
+    public static void emptyMemory(PCB pcb) {
         if(memory[0].equals(pcb.getpId()+"")) {
             for(int i = 0; i < 5; i++) {
                 memory[i]="";
@@ -61,7 +61,7 @@ public class Memory {
             }
         }
     }
-    public void saveInMemory(PCB pcb, String path) throws IOException {
+    public static void saveInMemory(PCB pcb, String path) throws IOException {
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         StringBuffer sb = new StringBuffer();
@@ -98,7 +98,7 @@ public class Memory {
 
         br.close();
     }
-    public void printMem(int place){
+    public static void printMem(int place){
         int counter=place==0?0:5;
         System.out.println();
         System.out.println("*******************************");
@@ -118,13 +118,13 @@ public class Memory {
         System.out.print("Third variable : " + memory[counter++]);
         System.out.println();
         System.out.println("Instructions of the process : ");
-        while(!(memory[counter]==null||memory[counter].equals("")||memory[counter].equals("null"))) {
+        while(!(counter>=memory.length||memory[counter]==null||memory[counter].equals("")||memory[counter].equals("null"))) {
             System.out.print(memory[counter++] + " / ");
         }
         System.out.println();
         System.out.println("*******************************");
     }
-    public int blockedInMemory(){
+    public static int blockedInMemory(){
         if (Parser.generalBlocked.contains(Integer.parseInt(memory[0]))){
             return 0;
         }else if(Parser.generalBlocked.contains(Integer.parseInt(memory[5]))){
@@ -132,12 +132,12 @@ public class Memory {
         }else{
         return -1;}
     }
-    public static Memory getInstance() {
-        if (instance == null){
-            instance = new Memory();
-        }
-        return instance;
-    }
+//    public static Memory getInstance() {
+//        if (instance == null){
+//            instance = new Memory();
+//        }
+//        return instance;
+//    }
 
 
 }

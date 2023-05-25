@@ -4,15 +4,13 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Parser {
-     int counter=0;
-     String userinput;
-
-     String input1;
-     String input2;
-     String input3;
-     String readFile;
-     static Memory memoryInstance=Memory.getInstance();
-     static String[] memory= memoryInstance.getMemory();
+     static int counter=0;
+     static String userinput;
+     static String input1;
+     static String input2;
+     static String input3;
+     static String readFile;
+     static String[] memory= Memory.memory;
      static Queue<Integer> Ready = new LinkedList<Integer>();
      static Queue<Integer> generalBlocked = new LinkedList<Integer>();
      static Queue<Integer> inputBlocked = new LinkedList<Integer>();
@@ -21,21 +19,21 @@ public class Parser {
      static Mutex userInput = new Mutex("userInput");
      static Mutex userOutput = new Mutex("userOutput");
      static Mutex file = new Mutex("file");
-     static String[] Disk=new String[20];
-     static  String[] temp1=new String[20];
+//     static String[] Disk=new String[20];
+//     static  String[] temp1=new String[20];
      static SystemCall systemCall=new SystemCall();
-     static Scheduler scheduler=Scheduler.getInstance();
+//     static Scheduler Scheduler=Scheduler.getInstance();
      static File hardDisk =new File("src/hardDisk");
      static File temp=new File("src/temp");
      static int t1,t2,t3;
-     private static Parser instance;
-     private Parser(){}
-     public static Parser getInstance() {
-          if (instance == null){
-               instance = new Parser();
-          }
-          return instance;
-     }
+//     private static Parser instance;
+     public Parser(){}
+//     public static Parser getInstance() {
+//          if (instance == null){
+//               instance = new Parser();
+//          }
+//          return instance;
+//     }
      private static void updatePcHelper(int x, String id){
           if (memory[0].equals(id)) {
                memory[2] =(x+1)+"" ;
@@ -71,9 +69,9 @@ public class Parser {
      }
 
      public static int spaceAvailable(String[] mem) {
-          if (mem[0]==null|| mem[0].equals("")) {
+          if (mem[0]==null|| mem[0].equals("") || mem[1].equalsIgnoreCase("Finished")) {
                return 0;
-          } else if (mem[5]==null || mem[5].equals("")) {
+          } else if (mem[5]==null || mem[5].equals("") || mem[6].equalsIgnoreCase("Finished")) {
                return 5;
           } else{
                return -1;
@@ -89,11 +87,11 @@ public class Parser {
 //     }
      public static void changePc(int id,int value){
           if(id==1){
-               scheduler.pcb1.setPc(value);
+               Scheduler.pcb1.setPc(value);
           } else if (id==2) {
-               scheduler.pcb2.setPc(value);
+              Scheduler.pcb2.setPc(value);
           }else{
-               scheduler.pcb3.setPc(value);
+               Scheduler.pcb3.setPc(value);
           }
      }
      public static void swapDiskToMem() throws IOException {
@@ -127,6 +125,7 @@ public class Parser {
 
                memory[3] = "0";
                memory[4] = "24";
+               updatePCB(Integer.parseInt(memory[0]),0);
                System.out.println("The process that is swapped from disk to memory is " + memory[0]);
 
           } else if (space == 5) {
@@ -150,6 +149,7 @@ public class Parser {
                }
                memory[8] = "5";
                memory[9] = "39";
+               updatePCB(Integer.parseInt(memory[5]),5);
                System.out.println("The process that is swapped from disk to memory is " + memory[5]);
           } else {
                // check not running, swap with it
@@ -180,7 +180,7 @@ public class Parser {
                     }
                     memory[3] = "0";
                     memory[4] = "24";
-
+                    updatePCB(Integer.parseInt(memory[0]),0);
                     // temp >> Disk
                     swapFileToFile(temp);
 
@@ -207,11 +207,22 @@ public class Parser {
                     }
                     memory[8] = "5";
                     memory[9] = "39";
-                    // temp >> Disk
+                    updatePCB(Integer.parseInt(memory[5]),5);
+                         // temp >> Disk
                     swapFileToFile(temp);
                }
           }
      }
+     public static void updatePCB(int id, int startPCB){
+          if(id==1){
+               Scheduler.pcb1.updatePCB(startPCB, memory);
+          } else if (id==2) {
+               Scheduler.pcb2.updatePCB(startPCB, memory);
+          }else{
+               Scheduler.pcb3.updatePCB(startPCB, memory);
+          }
+     }
+
      public static void swapFileToFile(File temp) throws IOException {
 
           // delete contents of Hard Disk
@@ -240,7 +251,7 @@ public class Parser {
 
      public static void swapTemp(File temp) throws IOException {
           FileWriter writer = new FileWriter(temp);
-          if (memoryInstance.blockedInMemory()==-1) {
+          if (Memory.blockedInMemory()==-1) {
                if (!(memory[1].equals("Running"))) {
                     swapMemToDiskHelper(writer, 0, 5, 10, 25);
 //               System.out.println("The process that is swapped from memory to disk is "+ memory[0]);
@@ -269,7 +280,7 @@ public class Parser {
 //               }
                }
 
-          }else if(memoryInstance.blockedInMemory()==0){
+          }else if(Memory.blockedInMemory()==0){
                swapMemToDiskHelper(writer, 0, 5, 10, 25);
           }else{
                swapMemToDiskHelper(writer, 5, 10, 25, 40);
@@ -430,23 +441,30 @@ public class Parser {
                memEnd = spaceAvailable == 0 ? 24 : 39;
           }
           PCB pcb = new PCB(pcbId, state, pc, memStart, memEnd);
-          memoryInstance.saveInMemory(pcb, path);
+          Memory.saveInMemory(pcb, path);
           Ready.add(pcb.getpId());
           if (wasFull){
                Ready.add(removed);
           }
           return pcb;
      }
-     public int execute(PCB pcb, int timeSlice) throws IOException {
+     public static int execute(PCB pcb, int timeSlice,Boolean justArrived) throws IOException {
           int pcValue = pcb.getPc();
           String Input="";
           for (int i = pcValue; i < pcValue + timeSlice && i <= pcb.getMemEnd(); i++) {
                System.out.println("*******************************" );
-               System.out.println("Clock cycle: " + (++counter));
                if (memory[i]==null||memory[i].equals("null")||memory[i].equals("")) {
                     pcb.setPc(pcb.getMemEnd());
+                    Scheduler.fixTimings(true);
                     break;
                }
+               if(!justArrived){
+                    System.out.println("*******************************" );
+                    System.out.println("Clock cycle: " + (++counter));
+                    Scheduler.fixTimings(false);
+               }
+               justArrived = false;
+
                String[] y = memory[i].split(" ");
                System.out.println("The Instruction that's currently executing is " + memory[i] + " in Process " + pcb.getpId());
                System.out.println("********");
@@ -485,11 +503,11 @@ public class Parser {
 
                }
                else if (y[0].equals("readFile")) {
-                    systemCall.readFile(memoryInstance.read(pcb, y[1]));
+                    systemCall.readFile(Memory.read(pcb, y[1]));
 
                }
                else if (y[0].equals("writeFile")) {
-                    systemCall.writeFile(memoryInstance.read(pcb, y[1]), memoryInstance.read(pcb, y[2]));
+                    systemCall.writeFile(Memory.read(pcb, y[1]), Memory.read(pcb, y[2]));
 
                } else if (y[0].equals("printFromTo")) {
                     systemCall.printFromTo(y[1], y[2], pcb);
@@ -514,34 +532,36 @@ public class Parser {
                          file.semSignal(pcb);
                     }
                }
-               t1--;
-               t2--;
-               t3--;
-
-               if (t1 == 0) {
-                    System.out.println("Process 1" + " arrived.");
-                    scheduler.pcb1= createProcess("src/Program_1.txt");
-               }
-               if (t2 == 0) {
-                    System.out.println("Process 2" + " arrived.");
-                    scheduler.pcb2=createProcess("src/Program_2.txt");
-               }
-               if (t3 == 0) {
-                    System.out.println("Process 3" + " arrived.");
-                   scheduler.pcb3= createProcess("src/Program_3.txt");
-               }
+//               t1--;
+//               t2--;
+//               t3--;
+//
+//               if (t1 == 0) {
+//                    System.out.println("Process 1" + " arrived.");
+//                    Scheduler.pcb1= createProcess("src/Program_1.txt");
+//               }
+//               if (t2 == 0) {
+//                    System.out.println("Process 2" + " arrived.");
+//                    Scheduler.pcb2=createProcess("src/Program_2.txt");
+//               }
+//               if (t3 == 0) {
+//                    System.out.println("Process 3" + " arrived.");
+//                   Scheduler.pcb3= createProcess("src/Program_3.txt");
+//               }
                 updatePC(pcb);
+               Scheduler.printAllData();
           }
           // mesh el mfrood tb2a getMemEnd + 1
-          boolean finished=((pcb.getPc()==pcb.getMemEnd()));
+
+          boolean finished=(pcb.getPc()==(pcb.getMemEnd()+1)||memory[pcb.getPc()]==null||memory[pcb.getPc()].equals("")||memory[pcb.getPc()].equals("null"));
           if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
                changeState(pcb,"Ready");
-               this.Ready.add(pcb.getpId());
+               Ready.add(pcb.getpId());
           }
           return pcb.getPc();
      }
 
-     public  void changeState(PCB pcb,String state) {
+     public static void changeState(PCB pcb, String state) {
           pcb.setState(state);
           if (pcb.getpId() == 1) {
                changeStateHelper("1",state);
@@ -576,17 +596,20 @@ public class Parser {
                memory[6] = state;
           }
      }
-     public void printQueues(){
+     public static void printQueues(){
           System.out.print("Ready Queue: ");
           printQueue(Ready);
           System.out.print("General Blocked Queue: ");
           printQueue(generalBlocked);
           System.out.print("userInput Blocked Queue: ");
-          printQueue(inputBlocked);
+//          printQueue(inputBlocked);
+          printQueue(userInput.blocked);
           System.out.print("userOutput Blocked Queue: ");
-          printQueue(outputBlocked);
+//          printQueue(outputBlocked);
+          printQueue(userOutput.blocked);
           System.out.print("file Blocked Queue: ");
-          printQueue(fileBlocked);
+//          printQueue(fileBlocked);
+          printQueue(file.blocked);
           System.out.println("");
           System.out.println("*********************");
      }
@@ -669,7 +692,7 @@ public class Parser {
 //               diskWriter.write("" + System.lineSeparator());
 //          }
 //          diskWriter.close();
-          scheduler.schedule( Q);
+          Scheduler.schedule( Q);
 //               Parser.createProcess("src/Program_1.txt");
 //               Parser.createProcess("src/Program_2.txt");
 //               Parser.createProcess("src/Program_3.txt");
