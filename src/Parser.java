@@ -4,6 +4,8 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Parser {
+     static int test=-100;
+     static int postponed = -1;
      static int counter=0;
      static String userinput;
      static String input1;
@@ -443,11 +445,15 @@ public class Parser {
           }
           PCB pcb = new PCB(pcbId, state, pc, memStart, memEnd);
           Memory.saveInMemory(pcb, path);
-          Scheduler.readyQueueSwap(pcbId);
-//          Ready.add(pcb.getpId());
-//          if (wasFull){
-//               Ready.add(removed);
-//          }
+//          Scheduler.readyQueueSwap(pcbId);
+          Ready.add(pcb.getpId());
+          if(postponed!=-1){
+               Ready.add(postponed);
+               postponed=-1;
+          }
+          if (wasFull){
+               Ready.add(removed);
+          }
           return pcb;
      }
      public static int execute(PCB pcb, int timeSlice,Boolean justArrived) throws IOException {
@@ -460,13 +466,19 @@ public class Parser {
                     Scheduler.fixTimings(true);
                     break;
                }
+
                if(!justArrived){
                     System.out.println("*******************************" );
                     System.out.println("Clock cycle: " + (counter++));
                     Scheduler.fixTimings(false);
+//                    if (test==1) {
+//                         changeState(pcb,"Ready");
+//                         Ready.add(pcb.getpId());
+//                         test=-1;
+//                         return -1;
+//                    }
                }
                justArrived = false;
-
                String[] y = memory[i].split(" ");
                System.out.println("The Instruction that's currently executing is " + memory[i] + " in Process " + pcb.getpId());
                System.out.println("********");
