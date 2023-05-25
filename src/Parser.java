@@ -25,7 +25,8 @@ public class Parser {
 //     static Scheduler Scheduler=Scheduler.getInstance();
      static File hardDisk =new File("src/hardDisk");
      static File temp=new File("src/temp");
-     static int t1,t2,t3;
+     static int t1,t2,t3,wasJustRunning;
+
 //     private static Parser instance;
      public Parser(){}
 //     public static Parser getInstance() {
@@ -424,10 +425,10 @@ public class Parser {
           if (spaceAvailable == -1) {
                //if memory is full
                int emptied = swapMemToDisk();
-               if(!Ready.isEmpty()){
-                    wasFull = true;
-                    removed=Ready.remove();
-               }
+//               if(!Ready.isEmpty()){
+//                    wasFull = true;
+//                    removed=Ready.remove();
+//               }
                memStart = emptied;
                memEnd = emptied == 0 ? 24 : 39;
                pc = emptied == 0 ? 13 : 28;
@@ -442,10 +443,11 @@ public class Parser {
           }
           PCB pcb = new PCB(pcbId, state, pc, memStart, memEnd);
           Memory.saveInMemory(pcb, path);
-          Ready.add(pcb.getpId());
-          if (wasFull){
-               Ready.add(removed);
-          }
+          Scheduler.readyQueueSwap(pcbId);
+//          Ready.add(pcb.getpId());
+//          if (wasFull){
+//               Ready.add(removed);
+//          }
           return pcb;
      }
      public static int execute(PCB pcb, int timeSlice,Boolean justArrived) throws IOException {
@@ -554,6 +556,7 @@ public class Parser {
           // mesh el mfrood tb2a getMemEnd + 1
 
           boolean finished=(pcb.getPc()==(pcb.getMemEnd()+1)||memory[pcb.getPc()]==null||memory[pcb.getPc()].equals("")||memory[pcb.getPc()].equals("null"));
+          wasJustRunning=pcb.getpId();
           if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
                changeState(pcb,"Ready");
                Ready.add(pcb.getpId());

@@ -93,6 +93,31 @@ public class Scheduler {
         System.out.println("Process " + processId + " is Running.");
         executing=Parser.execute(pcb,tslice,justArrived);
     }
+    public static void readyQueueSwap(int id){
+        if (!Parser.Ready.isEmpty()) {
+            int current = Parser.Ready.peek();
+            if (current == Parser.wasJustRunning) {
+                int swapped = Parser.Ready.remove();
+                Parser.Ready.add(id);
+                Parser.Ready.add(swapped);
+            } else {
+                int first = Parser.Ready.remove();
+                if (Parser.Ready.isEmpty()) {
+                    Parser.Ready.add(first);
+                    Parser.Ready.add(id);
+                } else {
+                    int swapped = Parser.Ready.remove();
+                    Parser.Ready.add(first);
+                    Parser.Ready.add(id);
+                    Parser.Ready.add(swapped);
+                }
+            }
+        }
+        else {
+            Parser.Ready.add(id);
+        }
+        }
+
     private static void processFinished(int processId, PCB pcb, int id){
         if (pcb.getPc() == (pcb.getMemEnd()+1)||Memory.memory[pcb.getPc()]==null||Memory.memory[pcb.getPc()].equals("")||Memory.memory[pcb.getPc()].equals("null")) {
             Parser.changeState(pcb,"Finished");
