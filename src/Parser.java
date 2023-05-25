@@ -425,10 +425,10 @@ public class Parser {
           if (spaceAvailable == -1) {
                //if memory is full
                int emptied = swapMemToDisk();
-//               if(!Ready.isEmpty()){
-//                    wasFull = true;
-//                    removed=Ready.remove();
-//               }
+               if(!Ready.isEmpty()){
+                    wasFull = true;
+                    removed=Ready.remove();
+               }
                memStart = emptied;
                memEnd = emptied == 0 ? 24 : 39;
                pc = emptied == 0 ? 13 : 28;
@@ -462,7 +462,7 @@ public class Parser {
                }
                if(!justArrived){
                     System.out.println("*******************************" );
-                    System.out.println("Clock cycle: " + (++counter));
+                    System.out.println("Clock cycle: " + (counter++));
                     Scheduler.fixTimings(false);
                }
                justArrived = false;
@@ -534,23 +534,7 @@ public class Parser {
                          file.semSignal(pcb);
                     }
                }
-//               t1--;
-//               t2--;
-//               t3--;
-//
-//               if (t1 == 0) {
-//                    System.out.println("Process 1" + " arrived.");
-//                    Scheduler.pcb1= createProcess("src/Program_1.txt");
-//               }
-//               if (t2 == 0) {
-//                    System.out.println("Process 2" + " arrived.");
-//                    Scheduler.pcb2=createProcess("src/Program_2.txt");
-//               }
-//               if (t3 == 0) {
-//                    System.out.println("Process 3" + " arrived.");
-//                   Scheduler.pcb3= createProcess("src/Program_3.txt");
-//               }
-                updatePC(pcb);
+               updatePC(pcb);
                Scheduler.printAllData();
           }
           // mesh el mfrood tb2a getMemEnd + 1
@@ -559,7 +543,12 @@ public class Parser {
           wasJustRunning=pcb.getpId();
           if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
                changeState(pcb,"Ready");
-               Ready.add(pcb.getpId());
+//               Scheduler.fixTimings(false);
+               if(t1-1==0||t2-1==0||t3-1==0){
+                    postponed = pcb.getpId();
+               }else{
+                    Ready.add(pcb.getpId());
+               }
           }
           return pcb.getPc();
      }

@@ -96,6 +96,7 @@ public class Scheduler {
     public static void readyQueueSwap(int id){
         if (!Parser.Ready.isEmpty()) {
             int current = Parser.Ready.peek();
+            System.out.println(current);
             if (current == Parser.wasJustRunning) {
                 int swapped = Parser.Ready.remove();
                 Parser.Ready.add(id);
@@ -112,11 +113,14 @@ public class Scheduler {
                     Parser.Ready.add(swapped);
                 }
             }
+
         }
         else {
             Parser.Ready.add(id);
+
         }
-        }
+        Parser.test=1;
+    }
 
     private static void processFinished(int processId, PCB pcb, int id){
         if (pcb.getPc() == (pcb.getMemEnd()+1)||Memory.memory[pcb.getPc()]==null||Memory.memory[pcb.getPc()].equals("")||Memory.memory[pcb.getPc()].equals("null")) {
@@ -132,7 +136,7 @@ public class Scheduler {
         int processId=-1;
 //        fixTimings(t1,t2,t3);
         boolean isFirstArrival =true;
-        System.out.println("Clock cycle: " + (++(Parser.counter)));
+        System.out.println("Clock cycle: " + ((Parser.counter)++));
         fixTimings(true);
         printAllData();
         while (!Parser.Ready.isEmpty()||isAllArrived()) {
@@ -181,7 +185,7 @@ public class Scheduler {
 //                System.out.println("Process " + processId + " is Running.");
 //                executing=Parser.execute(pcb3,tslice);
             } else{
-                System.out.println("Clock cycle: " + (++(Parser.counter)));
+                System.out.println("Clock cycle: " + ((Parser.counter)++));
                 fixTimings(false);
                 printAllData();
                 isFirstArrival = true;
