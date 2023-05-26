@@ -79,7 +79,7 @@ public class Scheduler {
 //        printAllData();
     }
     private static void processRunning(String id, int processId, int tslice, PCB pcb, boolean justArrived) throws IOException {
-        if (!Parser.memory[0].equals(id) && !Parser.memory[5].equals(id)) {
+        if (!Memory.memory[0].equals(id) && !Memory.memory[5].equals(id)) {
            if(Parser.spaceAvailable(Memory.memory)==-1){
                 Parser.swapTemp(Parser.temp);
                 Parser.swapDiskToMem();
@@ -89,13 +89,15 @@ public class Scheduler {
            }
         }
         Parser.changeState(pcb,"Running");
+        SystemCall.printAllData();
         Parser.Ready.remove(Integer.parseInt(id));
-        System.out.println("Process " + processId + " is Running.");
+//        System.out.println("Process " + processId + " is Running.");
         executing=Parser.execute(pcb,tslice,justArrived);
     }
     public static void readyQueueSwap(int id){
         if (!Parser.Ready.isEmpty()) {
             int current = Parser.Ready.peek();
+            System.out.println(current);
             if (current == Parser.wasJustRunning) {
                 int swapped = Parser.Ready.remove();
                 Parser.Ready.add(id);
@@ -112,11 +114,14 @@ public class Scheduler {
                     Parser.Ready.add(swapped);
                 }
             }
+
         }
         else {
             Parser.Ready.add(id);
+
         }
-        }
+        Parser.test=1;
+    }
 
     private static void processFinished(int processId, PCB pcb, int id){
         if (pcb.getPc() == (pcb.getMemEnd()+1)||Memory.memory[pcb.getPc()]==null||Memory.memory[pcb.getPc()].equals("")||Memory.memory[pcb.getPc()].equals("null")) {
@@ -124,17 +129,19 @@ public class Scheduler {
 //            Memory.emptyMemory(pcb);
             System.out.println("Process " + processId + " is finished. ******************");
             Parser.Ready.remove(id);
-            Memory.printMem(0);
-            Memory.printMem(1);
+            SystemCall.printAllData();
+
         }
     }
     public static void schedule(int tslice) throws IOException {
         int processId=-1;
 //        fixTimings(t1,t2,t3);
         boolean isFirstArrival =true;
-        System.out.println("Clock cycle: " + (++(Parser.counter)));
+        System.out.println("*******************************************");
+        System.out.println("*******************************************");
+        System.out.println("Clock cycle: " + ((Parser.counter)++));
         fixTimings(true);
-        printAllData();
+        SystemCall.printAllData();
         while (!Parser.Ready.isEmpty()||isAllArrived()) {
 //            printAllData();
             if(!Parser.Ready.isEmpty()){
@@ -181,9 +188,11 @@ public class Scheduler {
 //                System.out.println("Process " + processId + " is Running.");
 //                executing=Parser.execute(pcb3,tslice);
             } else{
-                System.out.println("Clock cycle: " + (++(Parser.counter)));
+                System.out.println("*******************************************");
+                System.out.println("*******************************************");
+                System.out.println("Clock cycle: " + ((Parser.counter)++));
                 fixTimings(false);
-                printAllData();
+                SystemCall.printAllData();
                 isFirstArrival = true;
             }
             if (processId == 1) {
@@ -213,13 +222,9 @@ public class Scheduler {
             }
             processId=-1;
         }
-        printAllData();
+        SystemCall.printAllData();
     }
-    public static void printAllData(){
-        Parser.printQueues();
-        Memory.printMem(0);
-        Memory.printMem(1);
-    }
+
     public static boolean isAllArrived(){
         return pcb1==null||pcb2==null||pcb3==null;
     }
