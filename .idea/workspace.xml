@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="blocked options">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="..">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Program_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
     <list id="9f08e8c5-0a1a-4b91-8cad-1a3dda9da1b7" name="Changes by Omar" comment="Changes by Omar" />
@@ -325,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684966852447</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="..">
+      <created>1685018522640</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685018522640</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,10 +356,10 @@
     <MESSAGE value="changes by aly" />
     <MESSAGE value="updateing pcb when swapping" />
     <MESSAGE value="instructions decomposed." />
-    <MESSAGE value=".." />
     <MESSAGE value="instructions decomposition" />
     <MESSAGE value="testing cases" />
     <MESSAGE value="Changes by Biso" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Biso" />
+    <MESSAGE value=".." />
+    <option name="LAST_COMMIT_MESSAGE" value=".." />
   </component>
 </project>
