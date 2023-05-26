@@ -98,32 +98,7 @@ public class Memory {
 
         br.close();
     }
-    public static void printMem(int place){
-        int counter=place==0?0:5;
-        System.out.println();
-        System.out.println("*******************************");
-        System.out.println("Memory" + " " +(place+1) +" Contains:");
-        System.out.println("PCB of the process : ");
-        System.out.print("The process ID is " + memory[counter++] + " / ");
-        System.out.print("The process State is " + memory[counter++] + " / ");
-        System.out.print("The program counter of the process is " + memory[counter++] + " / ");
-        System.out.print("The lower boundary of the process in the memory is " + memory[counter++] + " / ");
-        System.out.print("The upper boundary of the process in the memory is " + memory[counter]);
-        System.out.println();
-        counter = place==0?10:25;
 
-        System.out.println("Variables  of the process : ");
-        System.out.print("First variable : " + memory[counter++] + " / ");
-        System.out.print("Second variable : " + memory[counter++] + " / ");
-        System.out.print("Third variable : " + memory[counter++]);
-        System.out.println();
-        System.out.println("Instructions of the process : ");
-        while(!(counter>=memory.length||memory[counter]==null||memory[counter].equals("")||memory[counter].equals("null"))) {
-            System.out.print(memory[counter++] + " / ");
-        }
-        System.out.println();
-        System.out.println("*******************************");
-    }
     public static int blockedInMemory(){
         if (Parser.generalBlocked.contains(Integer.parseInt(memory[0]))){
             return 0;

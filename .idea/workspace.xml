@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="handling ready queue with creating process">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="adjusting overwriting variables">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" afterPath="$PROJECT_DIR$/beso" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
@@ -95,7 +95,9 @@
       <workItem from="1684950571170" duration="5217000" />
       <workItem from="1685048731617" duration="568000" />
       <workItem from="1685049701338" duration="1637000" />
-      <workItem from="1685051548089" duration="3872000" />
+      <workItem from="1685051548089" duration="4621000" />
+      <workItem from="1685059572013" duration="737000" />
+      <workItem from="1685099629563" duration="5984000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -349,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685027093446</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="adjusting overwriting variables">
+      <created>1685056481135</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1685056481135</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,6 +390,7 @@
     <MESSAGE value="testing cases" />
     <MESSAGE value="handling ready queue with creating process" />
     <MESSAGE value="Changes by Biso" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Biso" />
+    <MESSAGE value="adjusting overwriting variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjusting overwriting variables" />
   </component>
 </project>

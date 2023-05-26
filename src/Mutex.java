@@ -32,8 +32,8 @@ public class Mutex {
 //                Parser.fileBlocked.add(pcb.getpId());
 //            }
         }
-        System.out.println("Semwait Queue print");
-        Parser.printQueues();
+        System.out.println("Semwait Queue print: ");
+        SystemCall.printQueues();
     }
 
     public void semSignal(PCB pcb) {
@@ -42,9 +42,9 @@ public class Mutex {
             if (this.blocked.isEmpty()) {
                     flag = 1;
                     owner = "";
-                    System.out.println("emptyyyyyyyyyyyyyy");
+//                    System.out.println("emptyyyyyyyyyyyyyy");
             }else {
-                System.out.println(" not emptyyyyyyyyyyyyyy");
+//                System.out.println(" not emptyyyyyyyyyyyyyy");
                 int removed = this.blocked.remove();
                 owner = String.valueOf(removed);
                 Parser.generalBlocked.remove(removed);
@@ -119,7 +119,7 @@ public class Mutex {
 //                }
 //            }
         }
-        System.out.println("semSignal Queue print");
-        Parser.printQueues();
+        System.out.println("semSignal Queue print: ");
+        SystemCall.printQueues();
     }
 }

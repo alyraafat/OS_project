@@ -89,7 +89,7 @@ public class Scheduler {
            }
         }
         Parser.changeState(pcb,"Running");
-        Parser.printQueues();
+        SystemCall.printAllData();
         Parser.Ready.remove(Integer.parseInt(id));
 //        System.out.println("Process " + processId + " is Running.");
         executing=Parser.execute(pcb,tslice,justArrived);
@@ -129,7 +129,7 @@ public class Scheduler {
 //            Memory.emptyMemory(pcb);
             System.out.println("Process " + processId + " is finished. ******************");
             Parser.Ready.remove(id);
-            printAllData();
+            SystemCall.printAllData();
 
         }
     }
@@ -137,9 +137,11 @@ public class Scheduler {
         int processId=-1;
 //        fixTimings(t1,t2,t3);
         boolean isFirstArrival =true;
+        System.out.println("*******************************************");
+        System.out.println("*******************************************");
         System.out.println("Clock cycle: " + ((Parser.counter)++));
         fixTimings(true);
-        printAllData();
+        SystemCall.printAllData();
         while (!Parser.Ready.isEmpty()||isAllArrived()) {
 //            printAllData();
             if(!Parser.Ready.isEmpty()){
@@ -186,9 +188,11 @@ public class Scheduler {
 //                System.out.println("Process " + processId + " is Running.");
 //                executing=Parser.execute(pcb3,tslice);
             } else{
+                System.out.println("*******************************************");
+                System.out.println("*******************************************");
                 System.out.println("Clock cycle: " + ((Parser.counter)++));
                 fixTimings(false);
-                printAllData();
+                SystemCall.printAllData();
                 isFirstArrival = true;
             }
             if (processId == 1) {
@@ -218,13 +222,9 @@ public class Scheduler {
             }
             processId=-1;
         }
-        printAllData();
+        SystemCall.printAllData();
     }
-    public static void printAllData(){
-        Parser.printQueues();
-        Memory.printMem(0);
-        Memory.printMem(1);
-    }
+
     public static boolean isAllArrived(){
         return pcb1==null||pcb2==null||pcb3==null;
     }

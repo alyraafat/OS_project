@@ -12,13 +12,12 @@ public class Parser {
      static String input2;
      static String input3;
      static String readFile;
-//     static String[] Memory.memory;
+//     static String[] memory;
      static Queue<Integer> Ready;
      static Queue<Integer> generalBlocked;
      static Mutex userInput;
      static Mutex userOutput;
      static Mutex file;
-     static SystemCall systemCall;
      static File hardDisk;
      static File temp;
      static int t1,t2,t3,wasJustRunning;
@@ -27,7 +26,6 @@ public class Parser {
      public Parser(){
           temp=new File("src/temp");
           hardDisk =new File("src/hardDisk");
-          systemCall=new SystemCall();
           file = new Mutex("file");
           userOutput = new Mutex("userOutput");
           userInput = new Mutex("userInput");
@@ -467,7 +465,6 @@ public class Parser {
           int pcValue = pcb.getPc();
           String Input="";
           for (int i = pcValue; i < pcValue + timeSlice && i <= pcb.getMemEnd(); i++) {
-               System.out.println("*******************************" );
                if (Memory.memory[i]==null||Memory.memory[i].equals("null")||Memory.memory[i].equals("")) {
                     pcb.setPc(pcb.getMemEnd());
                     Scheduler.fixTimings(true);
@@ -475,6 +472,7 @@ public class Parser {
                }
 
                if(!justArrived){
+                    System.out.println("*******************************" );
                     System.out.println("*******************************" );
                     System.out.println("Clock cycle: " + (counter++));
                     Scheduler.fixTimings(false);
@@ -491,11 +489,11 @@ public class Parser {
                System.out.println("The Instruction that's currently executing is " + Memory.memory[i] + " in Process " + pcb.getpId());
                System.out.println("********");
                if (y[0].equals("print")) {
-                    systemCall.print( pcb,y[1]);
+                    SystemCall.print( pcb,y[1]);
                }
                else if (y[0].equals("input")) {
-                    System.out.println("Please enter an input: ");
-                    Scanner sc = new Scanner(System.in);
+//                    System.out.println("Please enter an input: ");
+//                    Scanner sc = new Scanner(System.in);
 //                    StringBuilder input = new StringBuilder();
 //                    String line;
 //                    // Read lines until 'quit' is entered
@@ -504,7 +502,7 @@ public class Parser {
 //                    }
 //                    sc.close();
 //                    userinput = input.toString();
-                    userinput = sc.nextLine();
+                    userinput = SystemCall.takeInputFromUser();
                     if (pcb.getpId() == 1) {
                          input1 = userinput;
                     } else if (pcb.getpId() == 2) {
@@ -517,30 +515,30 @@ public class Parser {
                     if (y[2].equals("input")) {
                          if (y[2].equals("input")) {
                               if (pcb.getpId() == 1) {
-                                   systemCall.assign(y[1], input1, pcb);
+                                   SystemCall.assign(y[1], input1, pcb);
                               } else if (pcb.getpId() == 2) {
-                                   systemCall.assign(y[1], input2, pcb);
+                                   SystemCall.assign(y[1], input2, pcb);
                               } else if (pcb.getpId() == 3) {
-                                   systemCall.assign(y[1], input3, pcb);
+                                   SystemCall.assign(y[1], input3, pcb);
                               }
                          }
 
                     }
                      else if (y[2].equals("readFile")) {
                           //assign b readFile a
-                          systemCall.assign(y[1], readFile, pcb);
+                          SystemCall.assign(y[1], readFile, pcb);
                     }
 
                }
                else if (y[0].equals("readFile")) {
-                    systemCall.readFile(Memory.read(pcb, y[1]));
+                    SystemCall.readFile(Memory.read(pcb, y[1]));
 
                }
                else if (y[0].equals("writeFile")) {
-                    systemCall.writeFile(Memory.read(pcb, y[1]), Memory.read(pcb, y[2]));
+                    SystemCall.writeFile(Memory.read(pcb, y[1]), Memory.read(pcb, y[2]));
 
                } else if (y[0].equals("printFromTo")) {
-                    systemCall.printFromTo(y[1], y[2], pcb);
+                    SystemCall.printFromTo(y[1], y[2], pcb);
                } else if (y[0].equals("semWait")) {
                     if (y[1].equals("userInput")) {
                          userInput.semWait(pcb);
@@ -563,15 +561,13 @@ public class Parser {
                     }
                }
                updatePC(pcb);
-               Scheduler.printAllData();
+               SystemCall.printAllData();
           }
-          // mesh el mfrood tb2a getMemEnd + 1
 
           boolean finished=(pcb.getPc()==(pcb.getMemEnd()+1)||Memory.memory[pcb.getPc()]==null||Memory.memory[pcb.getPc()].equals("")||Memory.memory[pcb.getPc()].equals("null"));
           wasJustRunning=pcb.getpId();
           if(!generalBlocked.contains(pcb.getpId())&&(!finished)){
                changeState(pcb,"Ready");
-//               Scheduler.fixTimings(false);
                if(t1-1==0||t2-1==0||t3-1==0){
                     postponed = pcb.getpId();
                }else{
@@ -616,47 +612,7 @@ public class Parser {
                Memory.memory[6] = state;
           }
      }
-     public static void printQueues(){
-          System.out.print("Ready Queue: ");
-          printQueue(Ready);
-          System.out.print("General Blocked Queue: ");
-          printQueue(generalBlocked);
-          System.out.print("userInput Blocked Queue: ");
-//          printQueue(inputBlocked);
-          printQueue(userInput.blocked);
-          System.out.print("userOutput Blocked Queue: ");
-//          printQueue(outputBlocked);
-          printQueue(userOutput.blocked);
-          System.out.print("file Blocked Queue: ");
-//          printQueue(fileBlocked);
-          printQueue(file.blocked);
-          System.out.println("");
-          System.out.println("*********************");
-     }
 
 
-
-     public Queue<Integer> getReady() {
-          return Ready;
-     }
-
-     public void setReady(Queue<Integer> ready) {
-          Ready = ready;
-     }
-
-
-     public Queue<Integer> getGeneralBlocked() {
-          return generalBlocked;
-     }
-
-     public void setGeneralBlocked(Queue<Integer> generalBlocked) {
-          this.generalBlocked = generalBlocked;
-     }
-     public static void printQueue(Queue<Integer> q) {
-          for (Integer item : q) {
-               System.out.print(item + " ");
-          }
-          System.out.println();
-     }
 
 }
