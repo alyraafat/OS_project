@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="adjusting overwriting variables">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="adjusting systemCall">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" afterPath="$PROJECT_DIR$/beso" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basel" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pee" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mutex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PCB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Program_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SystemCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SystemCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
@@ -45,19 +48,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "C:/SAYED/SAYED",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Lenovo\IdeaProjects\OS_project\src" />
@@ -97,7 +101,7 @@
       <workItem from="1685049701338" duration="1637000" />
       <workItem from="1685051548089" duration="4621000" />
       <workItem from="1685059572013" duration="737000" />
-      <workItem from="1685099629563" duration="5984000" />
+      <workItem from="1685099629563" duration="17033000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1683804063849</created>
@@ -358,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685056481135</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="adjusting systemCall">
+      <created>1685108526774</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1685108526774</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,6 +402,7 @@
     <MESSAGE value="handling ready queue with creating process" />
     <MESSAGE value="Changes by Biso" />
     <MESSAGE value="adjusting overwriting variables" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjusting overwriting variables" />
+    <MESSAGE value="adjusting systemCall" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjusting systemCall" />
   </component>
 </project>

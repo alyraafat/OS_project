@@ -1,15 +1,66 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Queue;
 import java.util.Scanner;
 
 public class SystemCall {
-//    static Parser Parser=Parser.getInstance();
+    public static String readFromMemory(PCB pcb, String needed) {
+        if (Memory.memory[0].equals(pcb.getpId()+"")) {
+            for (int i = 10; i < 13; i++) {
+                String[] y = Memory.memory[i].split(" ");
+                if (y[0].equals(needed)) {
+                    return y[2];
+                }
+            }
+        } else if (Memory.memory[5].equals(pcb.getpId()+"")) {
+            for (int i = 25; i < 28; i++) {
+                String[] y = Memory.memory[i].split(" ");
+                if (y[0].equals(needed)) {
+                    return y[2];
+                }
+            }
+
+        }
+        return needed;
+    }
+    public static void saveInMemory(PCB pcb, String path) throws IOException {
+        File file = new File(path);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+
+        int start = pcb.memStart;
+        int end = pcb.memEnd;
+        int counter = pcb.memStart;
+
+        Memory.memory[counter++] = pcb.getpId() + "";
+        Memory.memory[counter++] = pcb.getState();
+        Memory.memory[counter++] = pcb.getPc() + "";
+        Memory.memory[counter++] = start + "";
+        Memory.memory[counter] = end + "";
+        counter=start==0?10:25;
+
+        Memory.memory[counter++] = "";
+        Memory.memory[counter++] = "";
+        Memory.memory[counter++] = "";
+
+        while((line=br.readLine())!=null){
+            String[] y = line.split(" ");
+            if (y[0].equals("assign") && y[2].equals("readFile")) {
+                Memory.memory[counter++] = y[2] + " " + y[3];
+                Memory.memory[counter] = y[0] + " " + y[1] + " " + y[2] + " "+y[3];
+            } else if (y[0].equals("assign") && y[2].equals("input")) {
+                Memory.memory[counter++] = y[2];
+                Memory.memory[counter] = y[0] + " " + y[1] + " " + y[2];
+            } else {
+                Memory.memory[counter] = line;
+            }
+            counter++;
+        }
+
+        br.close();
+    }
 
     public static void print(PCB pcb, String needed){
-        System.out.println(Memory.read(pcb,needed));
+        System.out.println(readFromMemory(pcb,needed));
     }
     public static void printAllData(){
         printQueues();
@@ -45,17 +96,19 @@ public class SystemCall {
     public static void printQueues(){
         System.out.print("Ready Queue: ");
         printQueue(Parser.Ready);
+
         System.out.print("General Blocked Queue: ");
         printQueue(Parser.generalBlocked);
+
         System.out.print("userInput Blocked Queue: ");
-//          printQueue(inputBlocked);
         printQueue(Parser.userInput.blocked);
+
         System.out.print("userOutput Blocked Queue: ");
-//          printQueue(outputBlocked);
         printQueue(Parser.userOutput.blocked);
+
         System.out.print("file Blocked Queue: ");
-//          printQueue(fileBlocked);
         printQueue(Parser.file.blocked);
+
         System.out.println("");
         System.out.println("------------------");
     }
@@ -76,22 +129,9 @@ public class SystemCall {
 
         if (Memory.memory[0].equals(pcb.getpId()+"")) {
             assignHelper(result,10,13);
-//            for (int i=10;i<13;i++) {
-//                if (Parser.memory[i]==null||Parser.memory[i].equals("")) {
-//                    Parser.memory[i]=result;
-//                    System.out.println(result);
-//                    break;
-//                }
-//            }
         }
         else if (Memory.memory[5].equals(pcb.getpId()+"")) {
             assignHelper(result,25,28);
-//            for (int i=25;i<28;i++) {
-//                if (Parser.memory[i]==null||Parser.memory[i].equals("")) {
-//                    Parser.memory[i]=result;
-//                    break;
-//                }
-//            }
         }
     }
     private static void assignHelper(String result, int start, int end){
@@ -135,8 +175,8 @@ public class SystemCall {
     }
     public static void printFromTo(String a, String b, PCB pcb) {
         int start,end;
-        start = Integer.parseInt(Memory.read(pcb, a));
-        end = Integer.parseInt(Memory.read(pcb, b));
+        start = Integer.parseInt(readFromMemory(pcb, a));
+        end = Integer.parseInt(readFromMemory(pcb, b));
         for (int i = ++start; i < end; i++) {
             System.out.println(i);
         }

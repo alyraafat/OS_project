@@ -4,8 +4,6 @@ public class PCB {
     int pc;
     int memStart;
     int memEnd;
-    static int idReached=0;
-
 
     public PCB(int pId, String state, int pc, int memStart, int memEnd) {
         this.pId = pId;
@@ -26,10 +24,6 @@ public class PCB {
         return pId;
     }
 
-    public void setpId(int pId) {
-        this.pId = pId;
-    }
-
     public String getState() {
         return state;
     }
@@ -46,19 +40,8 @@ public class PCB {
         this.pc = pc;
     }
 
-    public int getMemStart() {
-        return memStart;
-    }
-
-    public void setMemStart(int memStart) {
-        this.memStart = memStart;
-    }
-
     public int getMemEnd() {
         return memEnd;
     }
 
-    public void setMemEnd(int memEnd) {
-        this.memEnd = memEnd;
-    }
 }
