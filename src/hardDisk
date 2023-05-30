@@ -1,4 +1,4 @@
-3
+1
 Blocked
 29
 5
@@ -9,12 +9,12 @@ Blocked
 semWait userInput
 input
 assign a input
+input
+assign b input
 semSignal userInput
-semWait file
-readFile a
-assign b readFile a
-semSignal file
 semWait userOutput
-print b
+printFromTo a b
 semSignal userOutput
+
+
 
