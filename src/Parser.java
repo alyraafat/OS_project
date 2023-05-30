@@ -297,6 +297,7 @@ public class Parser {
                memEnd = spaceAvailable == 0 ? 24 : 39;
           }
           PCB pcb = new PCB(pcbId, state, pc, memStart, memEnd);
+          emptyMemory(spaceAvailable);
           SystemCall.saveInMemory(pcb, path);
           Ready.add(pcb.getpId());
           if(postponed!=-1){
@@ -307,6 +308,24 @@ public class Parser {
                Ready.add(removed);
           }
           return pcb;
+     }
+     public static void emptyMemory(int start) {
+          if(start==0) {
+               for(int i = 0; i < 5; i++) {
+                    Memory.memory[i]="";
+               }
+               for(int i = 10; i < 25; i++) {
+                    Memory.memory[i]="";
+               }
+          }
+          else if(start==5) {
+               for(int i = 5; i < 10; i++) {
+                    Memory.memory[i]="";
+               }
+               for(int i = 25; i < 40; i++) {
+                    Memory.memory[i]="";
+               }
+          }
      }
      public static int execute(PCB pcb, int timeSlice,Boolean justArrived) throws IOException {
           int pcValue = pcb.getPc();

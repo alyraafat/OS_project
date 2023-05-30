@@ -18,7 +18,6 @@ public class SystemCall {
                     return y[2];
                 }
             }
-
         }
         return needed;
     }
@@ -87,11 +86,19 @@ public class SystemCall {
         System.out.print("Third variable : " + Memory.memory[counter++]);
         System.out.println();
         System.out.println("Instructions of the process : ");
-        while(!(counter>=Memory.memory.length||Memory.memory[counter]==null||Memory.memory[counter].equals("")||Memory.memory[counter].equals("null"))) {
+        int z= place==0?4:9;
+        int upperBoundary=39;
+        if(Memory.memory[z]!=null){
+            upperBoundary = Integer.parseInt(Memory.memory[z]);
+        }
+        while(!(counter>upperBoundary||counter>=Memory.memory.length||Memory.memory[counter]==null||Memory.memory[counter].equals("")||Memory.memory[counter].equals("null"))) {
             System.out.print(Memory.memory[counter++] + " / ");
         }
         System.out.println();
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
+    }
+    public static void printOutput(String s){
+        System.out.println(s);
     }
     public static void printQueues(){
         System.out.print("Ready Queue: ");
@@ -178,7 +185,7 @@ public class SystemCall {
         start = Integer.parseInt(readFromMemory(pcb, a));
         end = Integer.parseInt(readFromMemory(pcb, b));
         for (int i = ++start; i < end; i++) {
-            System.out.println(i);
+            printOutput(i+"");
         }
     }
 }
