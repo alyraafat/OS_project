@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="adjusting systemCall">
+    <list default="true" id="c458d7bb-eec8-45a5-83c5-0f0807fabaa8" name="Changes" comment="..">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/beso" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mutex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PCB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SystemCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SystemCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hardDisk" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardDisk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp" afterDir="false" />
     </list>
     <list id="dedf8e93-63bb-46c3-a0fc-8788888a6815" name="Changes by alewa" comment="" />
     <list id="ab087e3e-2eb8-45e8-8ea7-3269e48e3cd9" name="Changes by Biso" comment="Changes by Biso" />
@@ -48,20 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "C:/SAYED/SAYED",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/SAYED/SAYED&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Lenovo\IdeaProjects\OS_project\src" />
