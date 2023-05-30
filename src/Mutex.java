@@ -28,7 +28,7 @@ public class Mutex {
     }
 
     public void semSignal(PCB pcb) {
-        System.out.println("Owner " + owner + " left the chat.. ");
+//        System.out.println("Owner " + owner + " left the chat.. ");
         if (Objects.equals(owner, String.valueOf(pcb.getpId()))) {
             if (this.blocked.isEmpty()) {
                     flag = 1;

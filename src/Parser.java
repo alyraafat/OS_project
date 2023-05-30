@@ -253,10 +253,17 @@ public class Parser {
      public static int swapMemToDisk() throws IOException {
           int id = -1;
           FileWriter writer = new FileWriter(hardDisk);
-          if (!(Memory.memory[1].equals("Running"))) {
-               id = swapMemToDiskHelper(writer,0,5,10,25);
-          } else {
-               id = swapMemToDiskHelper(writer,5,10,25,40);
+          if (Memory.blockedInMemory()==-1) {
+               if (!(Memory.memory[1].equals("Running"))) {
+                   id= swapMemToDiskHelper(writer, 0, 5, 10, 25);
+               } else {
+                   id= swapMemToDiskHelper(writer, 5, 10, 25, 40);
+               }
+
+          }else if(Memory.blockedInMemory()==0){
+               id=swapMemToDiskHelper(writer, 0, 5, 10, 25);
+          }else{
+              id= swapMemToDiskHelper(writer, 5, 10, 25, 40);
           }
           writer.close();
           return id;
