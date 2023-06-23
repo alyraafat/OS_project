@@ -45,3 +45,10 @@ The Simulated OS outputs the following during execution:
 - The ID of any process whenever it is swapped in or out of disk.
 - The format of the memory stored on Disk.
 
+## Authors
+
+- [Aly Raafat](https://github.com/alyraafat)
+- [Omar Ashraf](https://github.com/OmarAshraf-02)
+- [Karim Gamaleldin](https://github.com/karimgamaleldin)
+- [Basel Farouk](https://github.com/basel68)
+- [Marwan Amgad](https://github.com/marwanamgad)
